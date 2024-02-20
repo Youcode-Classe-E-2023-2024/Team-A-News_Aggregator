@@ -1034,10 +1034,9 @@ License: You must have a valid license from official store to legally use the th
         <div class="flex flex-wrap flex-row lg:justify-between -mx-3">
           <div class="flex-shrink max-w-full w-full lg:w-2/5 px-3 lg:pr-16">
             <div class="flex items-center mb-2">
-              <span class="text-3xl leading-normal mb-2 font-bold text-gray-100 mt-2">TailNews</span>
-              <!-- <img src="src/img-min/logo.png" alt="LOGO"> -->
+              <span class="text-3xl leading-normal mb-2 font-bold text-gray-100 mt-2">News</span>
+              {{-- <img src="src/img-min/logo.png" alt="LOGO">  --}}
             </div>
-            <p>Tailwind News Template for build great newspapper, magazine and news portal.</p>
             <ul class="space-x-3 mt-6 mb-6 Lg:mb-0">
               <!--facebook-->
               <li class="inline-block">
