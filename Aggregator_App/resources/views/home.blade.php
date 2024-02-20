@@ -42,7 +42,7 @@ License: You must have a valid license from official store to legally use the th
               <!-- nav menu -->
               <ul class="navbar hidden lg:flex lg:flex-row text-gray-400 text-sm items-center font-bold">
                 <li class="active relative border-l border-gray-800 hover:bg-gray-900">
-                  <a class="block py-3 px-6 border-b-2 border-transparent" href="index.html">Home</a>
+                  <a class="block py-3 px-6 border-b-2 border-transparent" href="#">Home</a>
                 </li>
                 <li class="dropdown relative border-l border-gray-800 hover:bg-gray-900">
                   <a class="block py-3 px-6 border-b-2 border-transparent" href="#">Pages</a>
@@ -55,8 +55,8 @@ License: You must have a valid license from official store to legally use the th
 
                       <!--dropdown submenu-->
                       <ul class="dropdown-menu absolute left-full right-auto transform top-full z-50 border-b-0 text-left -mt-10 ml-0 mr-0 bg-white border border-gray-100" style="min-width: 12rem;">
-                        <li class="relative hover:bg-gray-50"><a class="block py-2 px-6 border-b border-gray-100" href="index.html">Homepage 1</a></li>
-                        <li class="relative hover:bg-gray-50"><a class="block py-2 px-6 border-b border-gray-100" href="index-2.html">Homepage 2</a></li>
+                        <li class="relative hover:bg-gray-50"><a class="block py-2 px-6 border-b border-gray-100" href="#">Homepage 1</a></li>
+                        <li class="relative hover:bg-gray-50"><a class="block py-2 px-6 border-b border-gray-100" href="#">Homepage 2</a></li>
                       </ul>
                     </li>
                     <li class="subdropdown relative hover:bg-gray-50">
@@ -66,12 +66,12 @@ License: You must have a valid license from official store to legally use the th
 
                       <!--dropdown submenu-->
                       <ul class="dropdown-menu absolute left-full right-auto transform top-full z-50 border-b-0 text-left -mt-10 ml-0 mr-0 bg-white border border-gray-100" style="min-width: 12rem;">
-                        <li class="relative hover:bg-gray-50"><a class="block py-2 px-6 border-b border-gray-100" href="404.html">404</a></li>
-                        <li class="relative hover:bg-gray-50"><a class="block py-2 px-6 border-b border-gray-100" href="author.html">Author</a></li>
-                        <li class="relative hover:bg-gray-50"><a class="block py-2 px-6 border-b border-gray-100" href="category.html">Category</a></li>
-                        <li class="relative hover:bg-gray-50"><a class="block py-2 px-6 border-b border-gray-100" href="search.html">Search</a></li>
-                        <li class="relative hover:bg-gray-50"><a class="block py-2 px-6 border-b border-gray-100" href="page.html">Page</a></li>
-                        <li class="relative hover:bg-gray-50"><a class="block py-2 px-6 border-b border-gray-100" href="contact-us.html">Contact</a></li>
+                        <li class="relative hover:bg-gray-50"><a class="block py-2 px-6 border-b border-gray-100" href="#">404</a></li>
+                        <li class="relative hover:bg-gray-50"><a class="block py-2 px-6 border-b border-gray-100" href="#">Author</a></li>
+                        <li class="relative hover:bg-gray-50"><a class="block py-2 px-6 border-b border-gray-100" href="#">Category</a></li>
+                        <li class="relative hover:bg-gray-50"><a class="block py-2 px-6 border-b border-gray-100" href="#">Search</a></li>
+                        <li class="relative hover:bg-gray-50"><a class="block py-2 px-6 border-b border-gray-100" href="#">Page</a></li>
+                        <li class="relative hover:bg-gray-50"><a class="block py-2 px-6 border-b border-gray-100" href="#">Contact</a></li>
                       </ul>
                     </li>
                     <li class="subdropdown relative hover:bg-gray-50">
@@ -81,8 +81,8 @@ License: You must have a valid license from official store to legally use the th
 
                       <!--dropdown submenu-->
                       <ul class="dropdown-menu absolute left-full right-auto transform top-full z-50 border-b-0 text-left -mt-10 ml-0 mr-0 bg-white border border-gray-100" style="min-width: 12rem;">
-                        <li class="relative hover:bg-gray-50"><a class="block py-2 px-6 border-b border-gray-100" href="single.html">Post default</a></li>
-                        <li class="relative hover:bg-gray-50"><a class="block py-2 px-6 border-b border-gray-100" href="single-2.html">Post fullwidth</a></li>
+                        <li class="relative hover:bg-gray-50"><a class="block py-2 px-6 border-b border-gray-100" href="#">Post default</a></li>
+                        <li class="relative hover:bg-gray-50"><a class="block py-2 px-6 border-b border-gray-100" href="#">Post fullwidth</a></li>
                       </ul>
                     </li>
 
@@ -93,10 +93,10 @@ License: You must have a valid license from official store to legally use the th
 
                       <!--dropdown submenu-->
                       <ul class="dropdown-menu absolute left-full right-auto transform top-full z-50 border-b-0 text-left -mt-10 ml-0 mr-0 bg-white border border-gray-100" style="min-width: 12rem;">
-                        <li class="relative hover:bg-gray-50"><a class="block py-2 px-6 border-b border-gray-100" href="docs/index.html">Get started</a></li>
-                        <li class="relative hover:bg-gray-50"><a class="block py-2 px-6 border-b border-gray-100" href="docs/components.html">Components</a></li>
-                        <li class="relative hover:bg-gray-50"><a class="block py-2 px-6 border-b border-gray-100" href="docs/credits.html">Credits</a></li>
-                        <li class="relative hover:bg-gray-50"><a class="block py-2 px-6 border-b border-gray-100" href="docs/changelogs.html">Changelogs</a></li>
+                        <li class="relative hover:bg-gray-50"><a class="block py-2 px-6 border-b border-gray-100" href="#">Get started</a></li>
+                        <li class="relative hover:bg-gray-50"><a class="block py-2 px-6 border-b border-gray-100" href="#">Components</a></li>
+                        <li class="relative hover:bg-gray-50"><a class="block py-2 px-6 border-b border-gray-100" href="#">Credits</a></li>
+                        <li class="relative hover:bg-gray-50"><a class="block py-2 px-6 border-b border-gray-100" href="#">Changelogs</a></li>
                       </ul>
                     </li>
                   </ul>
