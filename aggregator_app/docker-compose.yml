@@ -1,4 +1,8 @@
 services:
+    php:
+        image: your-php-image
+        volumes:
+            - './custom-php.ini:/etc/php/php.ini'
     laravel.test:
         build:
             context: ./vendor/laravel/sail/runtimes/8.3
@@ -27,6 +31,7 @@ services:
             - meilisearch
             - mailpit
             - selenium
+            - pgsql
     mysql:
         image: 'mysql/mysql-server:8.0'
         ports:
@@ -100,6 +105,31 @@ services:
             - '/dev/shm:/dev/shm'
         networks:
             - sail
+    pgsql:
+        image: 'postgres:15'
+        ports:
+            - '${FORWARD_DB_PORT:-5432}:5432'
+        environment:
+            PGPASSWORD: '${DB_PASSWORD:-secret}'
+            POSTGRES_DB: '${DB_DATABASE}'
+            POSTGRES_USER: '${DB_USERNAME}'
+            POSTGRES_PASSWORD: '${DB_PASSWORD:-secret}'
+        volumes:
+            - 'sail-pgsql:/var/lib/postgresql/data'
+            - './vendor/laravel/sail/database/pgsql/create-testing-database.sql:/docker-entrypoint-initdb.d/10-create-testing-database.sql'
+        networks:
+            - sail
+        healthcheck:
+            test:
+                - CMD
+                - pg_isready
+                - '-q'
+                - '-d'
+                - '${DB_DATABASE}'
+                - '-U'
+                - '${DB_USERNAME}'
+            retries: 3
+            timeout: 5s
 networks:
     sail:
         driver: bridge
@@ -109,4 +139,6 @@ volumes:
     sail-redis:
         driver: local
     sail-meilisearch:
+        driver: local
+    sail-pgsql:
         driver: local
