@@ -13,4 +13,8 @@ class Authentification extends Controller
     public function showLogin(){
         return view('pages.login');
     }
+
+    public function detailed(){
+        return view('pages.detailed');
+    }
 }
