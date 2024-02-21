@@ -3,8 +3,7 @@
 
 
 <div x-data="setup()" :class="{ 'dark': isDark }">
-    <div
-        class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-white dark:bg-gray-700 text-black dark:text-white">
+    <div class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-white dark:bg-gray-700 text-black dark:text-white">
 
         <x-headerdash/>
 
@@ -12,63 +11,9 @@
 
         <div class="h-full ml-14 mt-14 mb-10 md:ml-64">
             <x-statisticscards/>
-            <div class="grid grid-cols-1 lg:grid-cols-1 p-4 gap-4">
-
-                {{--                <!-- Social Traffic -->--}}
-                {{--                <div class="relative flex flex-col min-w-0 mb-4 lg:mb-0 break-words bg-gray-50 dark:bg-gray-800 w-full shadow-lg rounded">--}}
-                {{--                    <div class="rounded-t mb-0 px-0 border-0">--}}
-                {{--                        <div class="flex flex-wrap items-center px-4 py-2">--}}
-                {{--                            <div class="relative w-full max-w-full flex-grow flex-1">--}}
-                {{--                                <h3 class="font-semibold text-base text-gray-900 dark:text-gray-50">Social Traffic</h3>--}}
-                {{--                            </div>--}}
-                {{--                        </div>--}}
-                {{--                        <div class="block w-full overflow-x-auto">--}}
-                {{--                            <table class="items-center w-full bg-transparent border-collapse">--}}
-                {{--                                <thead>--}}
-                {{--                                <tr>--}}
-                {{--                                    <th class="px-4 bg-gray-100 dark:bg-gray-600 text-gray-500 dark:text-gray-100 align-middle border border-solid border-gray-200 dark:border-gray-500 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">Referral</th>--}}
-                {{--                                    <th class="px-4 bg-gray-100 dark:bg-gray-600 text-gray-500 dark:text-gray-100 align-middle border border-solid border-gray-200 dark:border-gray-500 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">Visitors</th>--}}
-                {{--                                    <th class="px-4 bg-gray-100 dark:bg-gray-600 text-gray-500 dark:text-gray-100 align-middle border border-solid border-gray-200 dark:border-gray-500 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left min-w-140-px"></th>--}}
-                {{--                                </tr>--}}
-                {{--                                </thead>--}}
-                {{--                                <tbody>--}}
-                {{--                                <tr class="text-gray-700 dark:text-gray-100">--}}
-                {{--                                    <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">Facebook</th>--}}
-                {{--                                    <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">5,480</td>--}}
-                {{--                                    <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">hello</td>--}}
-                {{--                                </tr>--}}
-                {{--                                <tr class="text-gray-700 dark:text-gray-100">--}}
-                {{--                                    <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">Twitter</th>--}}
-                {{--                                    <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">3,380</td>--}}
-                {{--                                    <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">heelloo</td>--}}
-                {{--                                </tr>--}}
-                {{--                                <tr class="text-gray-700 dark:text-gray-100">--}}
-                {{--                                    <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">Instagram</th>--}}
-                {{--                                    <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">4,105</td>--}}
-                {{--                                    <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">helloo</td>--}}
-                {{--                                </tr>--}}
-                {{--                                <tr class="text-gray-700 dark:text-gray-100">--}}
-                {{--                                    <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">Google</th>--}}
-                {{--                                    <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">4,985</td>--}}
-                {{--                                    <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">doo</td>--}}
-                {{--                                </tr>--}}
-                {{--                                <tr class="text-gray-700 dark:text-gray-100">--}}
-                {{--                                    <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">Linkedin</th>--}}
-                {{--                                    <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">2,250</td>--}}
-                {{--                                    <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">soso</td>--}}
-                {{--                                </tr>--}}
-                {{--                                </tbody>--}}
-                {{--                            </table>--}}
-                {{--                        </div>--}}
-                {{--                    </div>--}}
-                {{--                </div>--}}
-                {{--                <!-- ./Social Traffic -->--}}
-
-            </div>
-
             <!-- Task Summaries -->
             <div class="grid grid-cols-1 md:grid-cols-1 xl:grid-cols-1 gap-4 text-black dark:text-white">
-                <h3 class="ml-5 text-lg font-semibold">Flux RSS recent Links</h3>
+                <h3 class="ml-5  text-lg font-semibold">Flux RSS recent Links</h3>
                 <div class="ml-5 flex items-center">
                     <input type="text" name="name" id="name"
                            class="w-80 border border-gray-300 py-2.5 focus:outline-none focus:border-gray-300 rounded-l-lg rounded-l-md text-sm text-gray-900"
@@ -111,7 +56,6 @@
                     </div>
                 </div>
             </div>
-            <!-- ./Task Summaries -->
 
             <!-- Client Table -->
             <div class="mt-4 mx-4">
@@ -170,7 +114,6 @@
                 </div>
             </div>
         </div>
-        <!-- ./Client Table -->
 
     </div>
 </div>
@@ -183,7 +126,7 @@
         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
             <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                    Create New Product
+                    Change the Current Role
                 </h3>
                 <button type="button"
                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -199,10 +142,10 @@
             <form class="p-4 md:p-5">
                 <div class="grid gap-4 mb-4 grid-cols-1">
                     <div class="sm:col-span-1">
-                        <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
+                        <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Role</label>
                         <select id="category"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                            <option selected="">Select category</option>
+                            <option selected="">Select A Role</option>
                             <option value="TV">Admin</option>
                             <option value="PC">User</option>
                         </select>
@@ -229,26 +172,5 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
 
-<script>
-    const setup = () => {
-        const getTheme = () => {
-            if (window.localStorage.getItem('dark')) {
-                return JSON.parse(window.localStorage.getItem('dark'))
-            }
-            return !!window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
-        }
+<script src="{{ url('/js/dashboard.js') }}"></script>
 
-        const setTheme = (value) => {
-            window.localStorage.setItem('dark', value)
-        }
-
-        return {
-            loading: true,
-            isDark: getTheme(),
-            toggleTheme() {
-                this.isDark = !this.isDark
-                setTheme(this.isDark)
-            },
-        }
-    }
-</script>
