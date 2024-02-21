@@ -1,11 +1,3 @@
-<!--
-Template Name: Tailnews - Tailwind News Template
-Author: Aribudin
-Website: https://www.tailwindtemplate.net
-Contact: support@tailwindtemplate.net
-Purchase: https://themes.tailwindtemplate.net/tailnews
-License: You must have a valid license from official store to legally use the theme for your project.
--->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,15 +12,12 @@ License: You must have a valid license from official store to legally use the th
 
   <!-- Development css -->
   <link rel="stylesheet" href="src/css/style.css">
-
   <!-- Production css -->
   <!-- <link rel="stylesheet" href="dist/css/style.css"> -->
-
   <!-- google font -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
-
   <!-- Favicon  -->
-  <link rel="icon" href="src/img/favicon.jpg">
+
 </head>
 <body class="text-gray-700 pt-9 sm:pt-10">
   <!-- ========== { HEADER }==========  -->
