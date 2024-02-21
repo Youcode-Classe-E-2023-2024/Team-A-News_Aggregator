@@ -71,14 +71,17 @@
                 <h3 class="ml-5 text-lg font-semibold">Flux RSS recent Links</h3>
                 <div class="ml-5 flex items-center">
                     <input type="text" name="name" id="name"
-                           class="w-80 mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300 rounded-l-md text-sm text-gray-900"
+                           class="w-80 border border-gray-300 py-2.5 focus:outline-none focus:border-gray-300 rounded-l-lg rounded-l-md text-sm text-gray-900"
                            placeholder="Enter The URL">
-                    <form action=""
-                          method="post"
-                          class="bg-indigo-600 hover:bg-indigo-700 rounded-r-md px-4 py-2 text-gray-100 text-sm hover:shadow-xl transition duration-150 uppercase">
-                        @csrf
+                    <button class="">
+                        <form action=""
+                              method="post"
+                              class="bg-indigo-600 hover:bg-indigo-700 rounded-r-md px-4 py-2.5 mt-3 text-gray-100 text-sm ">
+                            @csrf
                             Submit
-                    </form>
+                        </form>
+                    </button>
+
                 </div>
 
                 <div class="ml-5 mr-5 md:col-span-2 xl:col-span-1">
