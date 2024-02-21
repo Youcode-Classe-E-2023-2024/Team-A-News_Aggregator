@@ -22,6 +22,10 @@ Route::get('/profile', function(){
     return view('pages.Profile');
 });
 
+Route::get('/about', function(){
+    return view('pages.about');
+});
+
 /*Register*/
 Route::get('register',[Authentification::class,'showRegister'])->name('form_register');
 /*Login*/
