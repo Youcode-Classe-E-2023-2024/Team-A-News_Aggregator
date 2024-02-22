@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('pages.home');
 });
 
 Route::middleware(['guest'])->group(function () {
@@ -35,3 +35,23 @@ Route::middleware(['auth'])->group(function () {
     // auth routes here
 
 });
+
+Route::get('/dashboard', function () {
+    return view('pages.dashboard');
+});
+
+Route::get('/category', function () {
+    return view('pages.category');
+});
+
+
+Route::get('/profile', function(){
+    return view('pages.Profile');
+});
+
+Route::get('/about', function(){
+    return view('pages.about');
+});
+
+/*detailed*/
+Route::get('home/detailed',[Authentification::class,'detailed'])->name('form_detailed');

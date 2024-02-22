@@ -1,6 +1,6 @@
 services:
     php:
-        image: your-php-image
+        image: sail-8.3/app:latest
         volumes:
             - './custom-php.ini:/etc/php/php.ini'
     laravel.test:
