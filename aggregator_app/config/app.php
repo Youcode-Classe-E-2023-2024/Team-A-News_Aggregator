@@ -169,6 +169,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         willvincent\Feeds\FeedsServiceProvider::class,
+        Laravel\Passport\PassportServiceProvider::class,
+
     ])->toArray(),
 
     /*
