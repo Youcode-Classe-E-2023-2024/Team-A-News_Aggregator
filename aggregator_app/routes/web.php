@@ -40,3 +40,5 @@ Route::get('/about', function(){
 Route::get('register',[Authentification::class,'showRegister'])->name('form_register');
 /*Login*/
 Route::get('login',[Authentification::class,'showLogin'])->name('form_login');
+/*detailed*/
+Route::get('home/detailed',[Authentification::class,'detailed'])->name('form_detailed');
