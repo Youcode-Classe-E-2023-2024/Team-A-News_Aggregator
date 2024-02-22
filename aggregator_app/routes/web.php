@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Http\Controllers\feedController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
@@ -33,25 +34,27 @@ Route::middleware(['guest'])->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     // auth routes here
+    Route::get('/dashboard', function () {
+        return view('pages.dashboard');
+    });
+
+    Route::get('/category', function () {
+        return view('pages.category');
+    });
+
+
+    Route::get('/profile', function () {
+        return view('pages.Profile');
+    });
+
+   Route::post('/feed/create', [feedController::class, "store"])->name('create_feed');
 
 });
 
-Route::get('/dashboard', function () {
-    return view('pages.dashboard');
-});
 
-Route::get('/category', function () {
-    return view('pages.category');
-});
-
-
-Route::get('/profile', function(){
-    return view('pages.Profile');
-});
-
-Route::get('/about', function(){
+Route::get('/about', function () {
     return view('pages.about');
 });
 
 /*detailed*/
-Route::get('home/detailed',[Authentification::class,'detailed'])->name('form_detailed');
+Route::get('home/detailed', [Authentification::class, 'detailed'])->name('form_detailed');
