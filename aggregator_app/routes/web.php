@@ -1,6 +1,8 @@
 <?php
 
-use App\Http\Controllers\Authentification;
+
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,7 +19,19 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-/*Register*/
-Route::get('register',[Authentification::class,'showRegister'])->name('form_register');
-/*Login*/
-Route::get('login',[Authentification::class,'showLogin'])->name('form_login');
+
+Route::middleware(['guest'])->group(function () {
+    // guest routes here
+
+    Route::get('/login', [LoginController::class, 'index'])->name('login');
+    Route::post('/login', [LoginController::class, 'login'])->name('login_handle');
+
+    Route::get('/register', [RegisterController::class, 'index'])->name('register');
+    Route::post('/register', [RegisterController::class, 'register'])->name('register_handle');
+});
+
+
+Route::middleware(['auth'])->group(function () {
+    // auth routes here
+
+});

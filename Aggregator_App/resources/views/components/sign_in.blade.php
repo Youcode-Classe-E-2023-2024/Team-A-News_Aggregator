@@ -1,27 +1,36 @@
-<div>
-    <!-- It is quality rather than quantity that matters. - Lucius Annaeus Seneca --><form action="{{ route('form_login') }}"  method="post" class="mt-10 space-y-4">
+<div class="w-full flex justify-center h-screen items-center">
+    <form id="login-form" class="mt-10 space-y-4" method="POST" action="{{ route('login_handle') }}">
         @csrf
+        @if ($errors->any())
+            <div class="text-red-500 text-sm" style="font-size: 10px">
+                {{ $errors->first() }}
+            </div>
+        @endif
+        @if(session('success'))
+            <p class="text-green-700">{{ session('success') }}</p>
+        @endif
         <div>
             <input name="email" type="email" autocomplete="email" required class="w-full text-sm px-4 py-3 rounded outline-none border-2 focus:border-blue-500" placeholder="Email address" />
         </div>
+
         <div>
             <input name="password" type="password" autocomplete="current-password" required class="w-full text-sm px-4 py-3 rounded outline-none border-2 focus:border-blue-500" placeholder="Password" />
         </div>
+
         <div class="flex items-center justify-between gap-4">
             <div class="flex items-center">
-                <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 shrink-0 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" />
                 <label for="remember-me" class="ml-3 block text-sm">
-                    Remember me
+                    Don't have an account yet ?
                 </label>
             </div>
             <div>
-                <a href="jajvascript:void(0);" class="text-sm text-blue-600 hover:text-blue-500">
-                    Forgot Password?
+                <a href="{{ route('register') }}" class="text-sm text-blue-600 hover:text-blue-500">
+                    Register ?
                 </a>
             </div>
         </div>
         <div class="!mt-10">
-            <button type="button" class="w-full py-2.5 px-4 text-sm rounded text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">
+            <button type="submit" class="w-full py-2.5 px-4 text-sm rounded text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">
                 Log in
             </button>
         </div>
