@@ -18,6 +18,16 @@ Route::get('/', function () {
     return view('pages.home');
 });
 
+
+Route::get('/dashboard', function () {
+    return view('pages.dashboard');
+});
+
+Route::get('/category', function () {
+    return view('pages.category');
+});
+
+
 Route::get('/profile', function(){
     return view('pages.Profile');
 });
