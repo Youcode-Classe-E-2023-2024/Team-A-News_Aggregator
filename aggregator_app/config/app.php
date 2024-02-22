@@ -170,6 +170,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         willvincent\Feeds\FeedsServiceProvider::class,
         Laravel\Passport\PassportServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
 
     ])->toArray(),
 
