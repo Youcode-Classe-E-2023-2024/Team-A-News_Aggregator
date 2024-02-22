@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Authentification;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,8 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('pages.home');
 });
+
 
 Route::get('/dashboard', function () {
     return view('pages.dashboard');
@@ -25,3 +27,16 @@ Route::get('/category', function () {
     return view('pages.category');
 });
 
+
+Route::get('/profile', function(){
+    return view('pages.Profile');
+});
+
+Route::get('/about', function(){
+    return view('pages.about');
+});
+
+/*Register*/
+Route::get('register',[Authentification::class,'showRegister'])->name('form_register');
+/*Login*/
+Route::get('login',[Authentification::class,'showLogin'])->name('form_login');
