@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\feedController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
@@ -61,7 +62,26 @@ Route::get('/about', function () {
 });
 
 
-Route::get('/x', function () {
-    $cat = \App\Models\Category::all();
-    return view('x', ['categories' => $cat]);
-});
+/*Register*/
+Route::get('register',[Authentification::class,'showRegister'])->name('form_register');
+/*Login*/
+Route::get('login',[Authentification::class,'showLogin'])->name('form_login');
+/*detailed*/
+Route::get('home/detailed',[Authentification::class,'detailed'])->name('form_detailed');
+
+Route::get('/category', [CategoryController::class, 'index']);
+
+Route::resource('categories', CategoryController::class)->names([
+    'index' => 'categories.index',
+    'create' => 'categories.create',
+    'store' => 'categories.store',
+    'show' => 'categories.show',
+    'edit' => 'categories.edit',
+    'update' => 'categories.update',
+    'destroy' => 'categories.destroy',
+]);
+
+Route::delete('/category/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
+
+Route::put('/categories/{id}', [CategoryController::class, 'update'])->name('categories.update');
+
