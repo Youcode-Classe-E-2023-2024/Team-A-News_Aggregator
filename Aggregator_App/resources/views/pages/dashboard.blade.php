@@ -3,7 +3,8 @@
 
 
 <div x-data="setup()" :class="{ 'dark': isDark }">
-    <div class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-white dark:bg-gray-700 text-black dark:text-white">
+    <div
+        class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-white dark:bg-gray-700 text-black dark:text-white">
 
         <x-headerdash/>
 
@@ -15,17 +16,17 @@
             <div class="grid grid-cols-1 md:grid-cols-1 xl:grid-cols-1 gap-4 text-black dark:text-white">
                 <h3 class="ml-5  text-lg font-semibold">Flux RSS recent Links</h3>
                 <div class="ml-5 flex items-center">
-                    <input type="text" name="name" id="name"
-                           class="w-80 border border-gray-300 py-2.5 focus:outline-none focus:border-gray-300 rounded-l-lg rounded-l-md text-sm text-gray-900"
-                           placeholder="Enter The URL">
-                    <button class="">
-                        <form action=""
-                              method="post"
-                              class="bg-indigo-600 hover:bg-indigo-700 rounded-r-md px-4 py-2.5 mt-3 text-gray-100 text-sm ">
-                            @csrf
+                    <form action="{{route('create_feed')}}"
+                          method="post"
+                          class="bg-indigo-600 hover:bg-indigo-700 rounded-r-md px-4 py-2.5 mt-3 text-gray-100 text-sm ">
+                        @csrf
+                        <input type="text" name="link" id="name"
+                               class="w-80 border border-gray-300 py-2.5 focus:outline-none focus:border-gray-300 rounded-l-lg rounded-l-md text-sm text-gray-900"
+                               placeholder="Enter The URL">
+                        <button class="">
                             Submit
-                        </form>
-                    </button>
+                        </button>
+                    </form>
 
                 </div>
 
@@ -142,7 +143,8 @@
             <form class="p-4 md:p-5">
                 <div class="grid gap-4 mb-4 grid-cols-1">
                     <div class="sm:col-span-1">
-                        <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Role</label>
+                        <label for="category"
+                               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Role</label>
                         <select id="category"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                             <option selected="">Select A Role</option>

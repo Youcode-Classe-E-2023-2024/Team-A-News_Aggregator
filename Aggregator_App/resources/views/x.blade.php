@@ -1,5 +1,5 @@
 @extends('layouts.main')
 
 @section('content')
-    <x-test />
+    <x-intrest_pop_up :categories="$categories"/>
 @endsection

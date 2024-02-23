@@ -1,7 +1,11 @@
 <?php
 
-use App\Http\Controllers\Authentification;
+
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\feedController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,23 +23,44 @@ Route::get('/', function () {
     return view('pages.home');
 });
 
+Route::middleware(['guest'])->group(function () {
+    // guest routes here
 
-Route::get('/dashboard', function () {
-    return view('pages.dashboard');
+    Route::get('/login', [LoginController::class, 'index'])->name('login');
+    Route::post('/login', [LoginController::class, 'login'])->name('login_handle');
+
+    Route::get('/register', [RegisterController::class, 'index'])->name('register');
+    Route::post('/register', [RegisterController::class, 'register'])->name('register_handle');
 });
 
-Route::get('/category', function () {
-    return view('pages.category');
+
+Route::middleware(['auth'])->group(function () {
+    // auth routes here
+
+    Route::post('', [UserController::class, 'submit_interests'])->name('submit_user_interests');
+
+    Route::get('/dashboard', function () {
+        return view('pages.dashboard');
+    });
+
+    Route::get('/category', function () {
+        return view('pages.category');
+    });
+
+
+    Route::get('/profile', function () {
+        return view('pages.Profile');
+    });
+
+   Route::post('/feed/create', [feedController::class, "store"])->name('create_feed');
+
 });
 
 
-Route::get('/profile', function(){
-    return view('pages.Profile');
-});
-
-Route::get('/about', function(){
+Route::get('/about', function () {
     return view('pages.about');
 });
+
 
 /*Register*/
 Route::get('register',[Authentification::class,'showRegister'])->name('form_register');
@@ -59,3 +84,4 @@ Route::resource('categories', CategoryController::class)->names([
 Route::delete('/category/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
 
 Route::put('/categories/{id}', [CategoryController::class, 'update'])->name('categories.update');
+
