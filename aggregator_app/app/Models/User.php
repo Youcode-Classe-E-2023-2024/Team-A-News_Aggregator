@@ -7,11 +7,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\Permission\Traits\HasRoles;
 
 
 class User extends Authenticatable
 {
-    use HasApiTokens, Notifiable, HasFactory;
+    use HasApiTokens, Notifiable, HasFactory, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -50,5 +51,10 @@ class User extends Authenticatable
 
     public function favorite() {
         return $this->hasMany(Favorite::class);
+    }
+
+    public function category()
+    {
+        return $this->hasMany(Category::class, 'user_id');
     }
 }

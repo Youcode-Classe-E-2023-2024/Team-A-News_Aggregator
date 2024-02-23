@@ -4,6 +4,7 @@
 use App\Http\Controllers\feedController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,6 +35,9 @@ Route::middleware(['guest'])->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     // auth routes here
+
+    Route::post('', [UserController::class, 'submit_interests'])->name('submit_user_interests');
+
     Route::get('/dashboard', function () {
         return view('pages.dashboard');
     });
@@ -56,5 +60,8 @@ Route::get('/about', function () {
     return view('pages.about');
 });
 
-/*detailed*/
-Route::get('home/detailed', [Authentification::class, 'detailed'])->name('form_detailed');
+
+Route::get('/x', function () {
+    $cat = \App\Models\Category::all();
+    return view('x', ['categories' => $cat]);
+});
