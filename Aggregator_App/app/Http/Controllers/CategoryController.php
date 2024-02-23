@@ -11,9 +11,10 @@ class CategoryController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        $categories = Category::all(); // Récupère toutes les catégories
-        return view('pages.category', compact('categories'));
+
+        {
+            $categories = Category::all(); 
+            return view('pages.category', compact('categories'));
     }
 
     /**
@@ -65,6 +66,9 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $category->delete();
+    
+        return redirect()->route('categories.index')->with('success', 'Category deleted successfully.');  
     }
 }

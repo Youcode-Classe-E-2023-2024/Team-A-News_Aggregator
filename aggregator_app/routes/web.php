@@ -44,4 +44,17 @@ Route::get('login',[Authentification::class,'showLogin'])->name('form_login');
 /*detailed*/
 Route::get('home/detailed',[Authentification::class,'detailed'])->name('form_detailed');
 
-Route::resource('category', CategoryController::class);
+Route::get('/category', [CategoryController::class, 'index']);
+
+Route::resource('categories', CategoryController::class)->names([
+    'index' => 'categories.index',
+    'create' => 'categories.create',
+    'store' => 'categories.store',
+    'show' => 'categories.show',
+    'edit' => 'categories.edit',
+    'update' => 'categories.update',
+    'destroy' => 'categories.destroy',
+]);
+
+Route::delete('/category/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
+

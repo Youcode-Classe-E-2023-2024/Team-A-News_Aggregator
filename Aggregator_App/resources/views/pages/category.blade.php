@@ -40,13 +40,17 @@
                                 <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                                     @foreach($categories as $category)
                                  <tr class="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400">
-                                    <td class="px-4 py-3 text-sm">{{ $category->Category }}</td>
+                                    <td class="px-4 py-3 text-sm">{{ $category->category }}</td>
                                     <td class="px-4 py-3 text-sm">{{ $category->created_at->format('d-m-Y') }}</td>
                                     <td class="px-4 py-3 text-xs text-center">
+                                        <form action="{{ route('category.destroy', $category->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
                                       <button type="submit"
                                                 class=" bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded">
                                             Delete User
                                         </button>
+                                    </form>
                                         <button data-modal-target="crud-modal2"
                                                 data-modal-toggle="crud-modal2"
                                                 class=" bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
@@ -130,7 +134,7 @@
                     <span class="sr-only">Close modal</span>
                 </button>
             </div>
-        <form class="p-4 md:p-5" action="{{ route('category.store')}}" method="POST">
+        <form class="p-4 md:p-5" action="{{ route('categories.store')}}" method="POST">
             @csrf
             <div class="grid gap-4 mb-4 grid-cols-1">
                 <div class="sm:col-span-1">
