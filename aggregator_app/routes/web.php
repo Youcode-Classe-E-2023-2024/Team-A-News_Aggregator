@@ -65,3 +65,7 @@ Route::get('/x', function () {
     $cat = \App\Models\Category::all();
     return view('x', ['categories' => $cat]);
 });
+
+Route::get('/favorit', function () {
+    return view('pages.favorit');
+});
