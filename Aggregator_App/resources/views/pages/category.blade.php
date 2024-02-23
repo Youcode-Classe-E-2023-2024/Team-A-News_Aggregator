@@ -97,11 +97,13 @@
                     <span class="sr-only">Close modal</span>
                 </button>
             </div>
-            <form class="p-4 md:p-5">
+            <form class="p-4 md:p-5" action="{{ route('categories.update', $category->id) }}" method="POST">
+                @csrf
+                @method('PUT')
                 <div class="grid gap-4 mb-4 grid-cols-1">
                     <div class="sm:col-span-1">
                         <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
-                        <input type="text" name="name" id="name"
+                        <input type="text" name="category" id="name" value="{{ $category->category }}"
                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                placeholder="Type product name" required="">
                     </div>

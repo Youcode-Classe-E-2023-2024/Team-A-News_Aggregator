@@ -58,3 +58,4 @@ Route::resource('categories', CategoryController::class)->names([
 
 Route::delete('/category/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
 
+Route::put('/categories/{id}', [CategoryController::class, 'update'])->name('categories.update');
