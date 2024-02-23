@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Authentification;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,3 +43,5 @@ Route::get('register',[Authentification::class,'showRegister'])->name('form_regi
 Route::get('login',[Authentification::class,'showLogin'])->name('form_login');
 /*detailed*/
 Route::get('home/detailed',[Authentification::class,'detailed'])->name('form_detailed');
+
+Route::resource('category', CategoryController::class);
