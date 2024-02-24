@@ -17,4 +17,9 @@ class Category extends Model
     {
         return $this->belongsTo(User::class, 'id');
     }
+
+    public function news()
+    {
+        return $this->hasMany(News::class, 'id');
+    }
 }
