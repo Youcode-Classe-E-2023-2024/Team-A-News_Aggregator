@@ -25,7 +25,7 @@ class feedController extends Controller
 
         $feed = FeedLink::create($result);
         $this->storeLinkContent($f, $result, $feed->id);
-        dd('nadi');
+        return back();
     }
 
     function storeLinkContent($f, $result, $feed_id) {
@@ -33,15 +33,16 @@ class feedController extends Controller
             $i['title'] = $item->get_title();
             $i['description'] = $item->get_description();
             $i['content'] = $item->get_content();
+            $i['thumbnail'] = $item->get_thumbnail();
             $i['category'] = $item->get_category();
             $i['date'] = $item->get_date();
             $i['link'] = $item->get_link();
-
 
             News::create([
                 'title' => $i['title'],
                 'description' => $i['description'],
                 'category' => $i['category'],
+                'thumbnail' => $i['thumbnail']['url'],
                 'date' => $i['date'],
                 'link' => $i['link'],
                 'feed_id' => $feed_id
