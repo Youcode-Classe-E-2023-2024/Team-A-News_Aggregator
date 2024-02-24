@@ -25,7 +25,7 @@ The project follows the standard Laravel architecture, with the following key co
    ```bash
     https://github.com/Youcode-Classe-E-2023-2024/Team-A-News_Aggregator.git
 
-2. Install dependencies::
+2. Update dependencies::
    ```bash
     composer update
 
