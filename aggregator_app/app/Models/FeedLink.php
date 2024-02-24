@@ -11,6 +11,8 @@ class FeedLink extends Model
 
     protected $fillable = [
         'link',
-        'content_id'
+        'image_url',
+        'description',
+        'title'
     ];
 }

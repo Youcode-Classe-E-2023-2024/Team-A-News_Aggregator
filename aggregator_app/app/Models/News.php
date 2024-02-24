@@ -12,6 +12,9 @@ class News extends Model
     protected $fillable = [
         'title',
         'description',
-        'link'
+        'feed_id',
+        'link',
+        'date',
+        'category'
     ];
 }
