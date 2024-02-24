@@ -60,15 +60,6 @@ Route::get('/about', function () {
     return view('pages.about');
 });
 
-
-/*Register*/
-Route::get('register',[Authentification::class,'showRegister'])->name('form_register');
-/*Login*/
-Route::get('login',[Authentification::class,'showLogin'])->name('form_login');
-/*detailed*/
-
-Route::get('home/detailed',[Authentification::class,'detailed'])->name('form_detailed');
-
 Route::get('/category', [CategoryController::class, 'index']);
 
 Route::resource('categories', CategoryController::class)->names([
