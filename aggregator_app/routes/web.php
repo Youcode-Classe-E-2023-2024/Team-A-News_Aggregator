@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\feedController;
 use App\Http\Controllers\LoginController;
@@ -36,13 +36,10 @@ Route::middleware(['guest'])->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     // auth routes here
+    Route::get('/dashboard', [DashboardController::class, "index"]);
 
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::post('', [UserController::class, 'submit_interests'])->name('submit_user_interests');
-
-    Route::get('/dashboard', function () {
-        return view('pages.dashboard');
-    });
 
     Route::get('/category', function () {
         return view('pages.category');
@@ -54,6 +51,7 @@ Route::middleware(['auth'])->group(function () {
     });
 
    Route::post('/feed/create', [feedController::class, "store"])->name('create_feed');
+   Route::post('/feed/delete/{id}', [feedController::class, "destroy"])->name('delete_feed');
 
 });
 
@@ -68,6 +66,7 @@ Route::get('register',[Authentification::class,'showRegister'])->name('form_regi
 /*Login*/
 Route::get('login',[Authentification::class,'showLogin'])->name('form_login');
 /*detailed*/
+
 Route::get('home/detailed',[Authentification::class,'detailed'])->name('form_detailed');
 
 Route::get('/category', [CategoryController::class, 'index']);

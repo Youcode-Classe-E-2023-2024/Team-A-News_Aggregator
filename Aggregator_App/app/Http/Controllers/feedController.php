@@ -4,24 +4,58 @@ namespace App\Http\Controllers;
 
 
 use App\Models\FeedLink;
+use App\Models\News;
 use Illuminate\Http\Request;
+use Vedmant\FeedReader\Facades\FeedReader;
 
 class feedController extends Controller
 {
     function store(Request $request) {
-        $request->validation([
-           'link' => 'required|url'
+
+        $request->validate([
+            'link' => 'required|url'
         ]);
+        $f = FeedReader::read($request->link);
+        $result = [
+            'title' => $f->get_title(),
+            'description' => $f->get_description(),
+            'link' => $f->get_link(),
+            'image_url' => $f->get_image_url(),
+        ];
 
-        FeedLink::create($request);
-
-        $this->storeLinkContent($request->link);
-
+        $feed = FeedLink::create($result);
+        $this->storeLinkContent($f, $result, $feed->id);
+        dd('nadi');
     }
 
-    function storeLinkContent($link) {
+    function storeLinkContent($f, $result, $feed_id) {
+        foreach ($f->get_items(0, $f->get_item_quantity()) as $item) {
+            $i['title'] = $item->get_title();
+            $i['description'] = $item->get_description();
+            $i['content'] = $item->get_content();
+            $i['category'] = $item->get_category();
+            $i['date'] = $item->get_date();
+            $i['link'] = $item->get_link();
 
-/*        $feed = \Feeds::make('http://feed/url/goes/here');*/
 
+            News::create([
+                'title' => $i['title'],
+                'description' => $i['description'],
+                'category' => $i['category'],
+                'date' => $i['date'],
+                'link' => $i['link'],
+                'feed_id' => $feed_id
+            ]);
+
+
+            $result['items'][] = $i;
+        }
+    }
+
+    function destroy($id) {
+        $feed = FeedLink::find($id);
+
+        $feed->delete();
+        return back();
     }
 }
