@@ -13,7 +13,7 @@
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
         "vedmant/laravel-feed-reader": "^1.6",
-        "willvincent/feeds": "^2.3"
+        "willvincent/feeds": "^2.3",
         "spatie/laravel-permission": "^6.3"
     },
     "require-dev": {
