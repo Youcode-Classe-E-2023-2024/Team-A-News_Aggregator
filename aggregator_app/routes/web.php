@@ -37,6 +37,7 @@ Route::middleware(['guest'])->group(function () {
 Route::middleware(['auth'])->group(function () {
     // auth routes here
 
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::post('', [UserController::class, 'submit_interests'])->name('submit_user_interests');
 
     Route::get('/dashboard', function () {
