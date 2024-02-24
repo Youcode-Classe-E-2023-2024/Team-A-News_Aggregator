@@ -81,6 +81,6 @@ Route::get('/x', function () {
     return view('x', ['categories' => $cat]);
 });
 
-Route::get('/favorit', function () {
-    return view('pages.favorit');
+Route::get('/favorite', function () {
+    return view('pages.favorite');
 });
