@@ -10,7 +10,8 @@ use Vedmant\FeedReader\Facades\FeedReader;
 
 class feedController extends Controller
 {
-    function store(Request $request) {
+    function store(Request $request)
+    {
 
         $request->validate([
             'link' => 'required|url'
@@ -24,24 +25,24 @@ class feedController extends Controller
         ];
 
         $feed = FeedLink::create($result);
-        $this->storeLinkContent($f, $result, $feed->id);
+        $this->storeLinkContent($f, $result, $feed->id, $category);
         return back();
     }
 
-    function storeLinkContent($f, $result, $feed_id) {
+    function storeLinkContent($f, $result, $feed_id, $category)
+    {
         foreach ($f->get_items(0, $f->get_item_quantity()) as $item) {
             $i['title'] = $item->get_title();
             $i['description'] = $item->get_description();
             $i['content'] = $item->get_content();
             $i['thumbnail'] = $item->get_thumbnail();
-            $i['category'] = $item->get_category();
             $i['date'] = $item->get_date();
             $i['link'] = $item->get_link();
-            
+
             News::create([
                 'title' => $i['title'],
                 'description' => $i['description'],
-                'category' => $i['category'],
+                'category' => $category,
                 'thumbnail' => isset($i['thumbnail']['url']) ? $i['thumbnail']['url'] : '',
                 'date' => $i['date'],
                 'link' => $i['link'],
@@ -53,7 +54,8 @@ class feedController extends Controller
         }
     }
 
-    function destroy($id) {
+    function destroy($id)
+    {
         $feed = FeedLink::find($id);
 
         $feed->delete();
