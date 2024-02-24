@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
-            $table->string('category');
+            $table->string('category')->nullable();
+            $table->string('thumbnail')->nullable();
             $table->string('date');
             $table->string('link');
             $table->bigInteger('feed_id')->unsigned();
