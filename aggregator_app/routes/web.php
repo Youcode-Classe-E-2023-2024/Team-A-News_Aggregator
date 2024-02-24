@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\feedController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,6 +38,9 @@ Route::middleware(['auth'])->group(function () {
     // auth routes here
     Route::get('/dashboard', [DashboardController::class, "index"]);
 
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+    Route::post('', [UserController::class, 'submit_interests'])->name('submit_user_interests');
+
     Route::get('/category', function () {
         return view('pages.category');
     });
@@ -55,6 +60,28 @@ Route::get('/about', function () {
     return view('pages.about');
 });
 
+
+/*Register*/
+Route::get('register',[Authentification::class,'showRegister'])->name('form_register');
+/*Login*/
+Route::get('login',[Authentification::class,'showLogin'])->name('form_login');
 /*detailed*/
-// Route::get('home/detailed', [Authentification::class, 'detailed'])->name('form_detailed');
+
+Route::get('home/detailed',[Authentification::class,'detailed'])->name('form_detailed');
+
+Route::get('/category', [CategoryController::class, 'index']);
+
+Route::resource('categories', CategoryController::class)->names([
+    'index' => 'categories.index',
+    'create' => 'categories.create',
+    'store' => 'categories.store',
+    'show' => 'categories.show',
+    'edit' => 'categories.edit',
+    'update' => 'categories.update',
+    'destroy' => 'categories.destroy',
+]);
+
+Route::delete('/category/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
+
+Route::put('/categories/{id}', [CategoryController::class, 'update'])->name('categories.update');
 

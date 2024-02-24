@@ -10,6 +10,14 @@
         <x-sidebardash/>
 
         <div class="h-full ml-14 mt-14 mb-10 md:ml-64">
+            @if(session('success'))
+            <div class="max-w-4xl mx-auto px-4">
+                <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4" role="alert">
+                    <p class="font-bold">Success</p>
+                    <p>{{ session('success') }}</p>
+                </div>
+            </div>
+        @endif
             <div class="grid grid-cols-1 md:grid-cols-1 xl:grid-cols-1 gap-4 text-black dark:text-white">
                 <div class="mt-4 mx-4">
                     <button
@@ -30,14 +38,19 @@
                                 </tr>
                                 </thead>
                                 <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                                <tr class="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400">
-                                    <td class="px-4 py-3 text-sm">hafsa</td>
-                                    <td class="px-4 py-3 text-sm">15-01-2021</td>
+                                    @foreach($categories as $category)
+                                 <tr class="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400">
+                                    <td class="px-4 py-3 text-sm">{{ $category->category }}</td>
+                                    <td class="px-4 py-3 text-sm">{{ $category->created_at->format('d-m-Y') }}</td>
                                     <td class="px-4 py-3 text-xs text-center">
-                                        <button type="submit"
+                                        <form action="{{ route('category.destroy', $category->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                      <button type="submit"
                                                 class=" bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded">
                                             Delete User
                                         </button>
+                                    </form>
                                         <button data-modal-target="crud-modal2"
                                                 data-modal-toggle="crud-modal2"
                                                 class=" bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
@@ -47,6 +60,7 @@
 
                                     </td>
                                 </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -83,11 +97,13 @@
                     <span class="sr-only">Close modal</span>
                 </button>
             </div>
-            <form class="p-4 md:p-5">
+            <form class="p-4 md:p-5" action="{{ route('categories.update', $category->id) }}" method="POST">
+                @csrf
+                @method('PUT')
                 <div class="grid gap-4 mb-4 grid-cols-1">
                     <div class="sm:col-span-1">
                         <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
-                        <input type="text" name="name" id="name"
+                        <input type="text" name="category" id="name" value="{{ $category->category }}"
                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                placeholder="Type product name" required="">
                     </div>
@@ -120,20 +136,18 @@
                     <span class="sr-only">Close modal</span>
                 </button>
             </div>
-            <form class="p-4 md:p-5">
-                <div class="grid gap-4 mb-4 grid-cols-1">
-                    <div class="sm:col-span-1">
-                        <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
-                        <input type="text" name="name" id="name"
-                               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                               placeholder="Type Category Name" required="">
-                    </div>
+        <form class="p-4 md:p-5" action="{{ route('categories.store')}}" method="POST">
+            @csrf
+            <div class="grid gap-4 mb-4 grid-cols-1">
+                <div class="sm:col-span-1">
+                    <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
+                    <input type="text" name="category" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type Category Name" required="">
                 </div>
-                <button type="submit"
-                        class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                    Create
-                </button>
-            </form>
+            </div>
+            <button type="submit" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                Create
+            </button>
+        </form>
         </div>
     </div>
 </div>
