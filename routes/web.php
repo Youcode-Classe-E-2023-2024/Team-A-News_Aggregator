@@ -40,10 +40,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::post('', [UserController::class, 'submit_interests'])->name('submit_user_interests');
 
-    Route::get('/category', function () {
-        return view('pages.category');
-    });
-
 
     Route::get('/profile', function () {
         return view('pages.Profile');
