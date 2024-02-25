@@ -5,8 +5,10 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\feedController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
+use App\Models\News;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -74,3 +76,5 @@ Route::put('/categories/{id}', [CategoryController::class, 'update'])->name('cat
 Route::get('/favorite', function () {
     return view('pages.favorite');
 });
+
+Route::get('/news/{news_id}', [NewsController::class, 'index']);
