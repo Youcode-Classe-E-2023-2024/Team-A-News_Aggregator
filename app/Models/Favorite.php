@@ -14,7 +14,13 @@ class Favorite extends Model
         'news_id'
     ];
 
-    function user () {
-        return $this->hasMany(User::class);
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function news()
+    {
+        return $this->belongsTo(News::class);
     }
 }

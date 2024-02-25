@@ -17,4 +17,9 @@ class News extends Model
         'date',
         'category'
     ];
+
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class);
+    }
 }

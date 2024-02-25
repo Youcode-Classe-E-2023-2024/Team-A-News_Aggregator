@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\feedController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
@@ -81,6 +82,8 @@ Route::get('/x', function () {
     return view('x', ['categories' => $cat]);
 });
 
-Route::get('/favorite', function () {
-    return view('pages.favorite');
+Route::get('/f', function () {
+    return view('favorite');
 });
+
+
