@@ -16,6 +16,7 @@ class HomeController extends Controller
 
         if (!empty($items)) {
             $mainHero = $items[0];
+/*            dd($mainHero);*/
             $fourHeroes = array_slice($items, 1, 4);
             return view('pages.home', compact('fourHeroes', 'mainHero'));
         }
