@@ -12,7 +12,6 @@ class feedController extends Controller
 {
     function store(Request $request)
     {
-
         $request->validate([
             'link' => 'required|url',
             'category' => 'required'
@@ -32,6 +31,7 @@ class feedController extends Controller
 
     function storeLinkContent($f, $result, $feed_id, $category)
     {
+
         foreach ($f->get_items(0, $f->get_item_quantity()) as $item) {
             $i['title'] = $item->get_title();
             $i['description'] = $item->get_description();
@@ -39,8 +39,7 @@ class feedController extends Controller
             $i['thumbnail'] = $item->get_thumbnail();
             $i['date'] = $item->get_date();
             $i['link'] = $item->get_link();
-
-            News::create([
+            $news = News::create([
                 'title' => $i['title'],
                 'description' => $i['description'],
                 'category' => $category,
@@ -50,7 +49,7 @@ class feedController extends Controller
                 'feed_id' => $feed_id
             ]);
 
-
+                dd($news);
             $result['items'][] = $i;
         }
     }
