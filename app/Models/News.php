@@ -17,4 +17,8 @@ class News extends Model
         'date',
         'category'
     ];
+
+    function category() {
+        return $this->belongsTo(Category::class);
+    }
 }

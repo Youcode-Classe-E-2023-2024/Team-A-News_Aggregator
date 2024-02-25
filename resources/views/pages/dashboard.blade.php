@@ -19,6 +19,15 @@
                     <form action="{{ route('create_feed') }}" method="post"
                         class="bg-indigo-600 hover:bg-indigo-700 rounded-r-md px-4 py-2.5 mt-3 text-gray-100 text-sm ">
                         @csrf
+
+                        <select
+                        class="w-80 border border-gray-300 py-2.5 focus:outline-none focus:border-gray-300 rounded-l-lg rounded-l-md text-sm text-gray-900"
+                        name="category" id="">
+                        <option value="" selected disabled hidden>Choose Category here</option>
+                        @foreach ($categories as $category)
+                        <option value="{{$category['id']}}">{{$category['category']}}</option>
+                        @endforeach
+                        </select>
                         <input type="text" name="link" id="name"
                             class="w-80 border border-gray-300 py-2.5 focus:outline-none focus:border-gray-300 rounded-l-lg rounded-l-md text-sm text-gray-900"
                             placeholder="Enter The URL">

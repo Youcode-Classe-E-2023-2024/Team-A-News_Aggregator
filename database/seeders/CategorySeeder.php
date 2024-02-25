@@ -15,10 +15,18 @@ class CategorySeeder extends Seeder
     public function run()
     {
         $categories = [
+            ['category' => 'World'],
+            ['category' => 'Africa'],
+            ['category' => 'Europe'],
+            ['category' => 'Americas'],
+            ['category' => 'U.S.'],
             ['category' => 'Politics'],
             ['category' => 'Technology'],
+            ['category' => 'Business'],
             ['category' => 'Sports'],
-            // Add more categories as needed
+            ['category' => 'Science'],
+            ['category' => 'Health'],
+            ['category' => 'Arts'],
         ];
 
         foreach ($categories as $category) {

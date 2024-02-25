@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\feedController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
@@ -19,9 +20,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('pages.home');
-});
+Route::get('/', [HomeController::class, 'index']);
 
 Route::middleware(['guest'])->group(function () {
     // guest routes here
@@ -40,10 +39,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::post('', [UserController::class, 'submit_interests'])->name('submit_user_interests');
-
-    Route::get('/category', function () {
-        return view('pages.category');
-    });
 
 
     Route::get('/profile', function () {
@@ -75,11 +70,6 @@ Route::resource('categories', CategoryController::class)->names([
 Route::delete('/category/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
 
 Route::put('/categories/{id}', [CategoryController::class, 'update'])->name('categories.update');
-
-Route::get('/x', function () {
-    $cat = \App\Models\Category::all();
-    return view('x', ['categories' => $cat]);
-});
 
 Route::get('/favorite', function () {
     return view('pages.favorite');

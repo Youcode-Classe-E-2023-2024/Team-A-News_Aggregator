@@ -13,8 +13,8 @@ class Category extends Model
             'category'
         ];
 
-    public function user()
+    public function news()
     {
-        return $this->belongsTo(User::class, 'id');
+        return $this->hasMany(News::class);
     }
 }

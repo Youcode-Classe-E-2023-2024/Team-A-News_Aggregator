@@ -6,7 +6,7 @@
    <!-- =========={ NAVBAR }==========  -->
 
   <x-navbar_home />
-  
+
   <!-- =========={ MAIN }==========  -->
   <main id="content">
     <!-- advertisement -->
@@ -33,12 +33,12 @@
                 <img class="max-w-full w-full mx-auto h-auto" src="src/img/dummy/img1.jpg" alt="Image description">
               </a>
               <div class="absolute px-5 pt-8 pb-5 bottom-0 w-full bg-gradient-cover">
-                <a href="#">
-                  <h2 class="text-3xl font-bold capitalize text-white mb-3">Amazon Shoppers Are Ditching Designer Belts for This Best-Selling</h2>
+                <a href="/news/{{$mainHero['id']}}">
+                  <h2 class="text-3xl font-bold capitalize text-white mb-3">{{$mainHero["title"]}}</h2>
                 </a>
                 <p class="text-gray-100 hidden sm:inline-block">This is a wider card with supporting text below as a natural lead-in to additional content. This very helpfull for generate default content..</p>
                 <div class="pt-2">
-                  <div class="text-gray-100"><div class="inline-block h-3 border-l-2 border-red-600 mr-2"></div>Europe</div>
+                  <div class="text-gray-100"><div class="inline-block h-3 border-l-2 border-red-600 mr-2"></div>{{$mainHero["category"]}}</div>
                 </div>
               </div>
             </div>
@@ -47,22 +47,26 @@
           <!--Start box news-->
           <div class="flex-shrink max-w-full w-full lg:w-1/2">
             <div class="box-one flex flex-row flex-wrap">
-              <article class="flex-shrink max-w-full w-full sm:w-1/2">
-                <div class="relative hover-img max-h-48 overflow-hidden">
-                  <a href="#">
-                    <img class="max-w-full w-full mx-auto h-auto" src="src/img/dummy/img2.jpg" alt="Image description">
-                  </a>
-                  <div class="absolute px-4 pt-7 pb-4 bottom-0 w-full bg-gradient-cover">
-                    <a href="#">
-                      <h2 class="text-lg font-bold capitalize leading-tight text-white mb-1">News magazines are becoming obsolete, replaced by gadgets</h2>
-                    </a>
-                    <div class="pt-1">
-                      <div class="text-gray-100"><div class="inline-block h-3 border-l-2 border-red-600 mr-2"></div>Techno</div>
+
+                @foreach ($fourHeroes as $hero)
+
+                <article class="flex-shrink max-w-full w-full sm:w-1/2">
+                    <div class="relative hover-img max-h-48 overflow-hidden">
+                        <a href="#">
+                            <img class="max-w-full w-full mx-auto h-auto" src="src/img/dummy/img2.jpg" alt="Image description">
+                        </a>
+                        <div class="absolute px-4 pt-7 pb-4 bottom-0 w-full bg-gradient-cover">
+                            <a href="#">
+                                <h2 class="text-lg font-bold capitalize leading-tight text-white mb-1">{{$hero['title']}}</h2>
+                            </a>
+                            <div class="pt-1">
+                                <div class="text-gray-100"><div class="inline-block h-3 border-l-2 border-red-600 mr-2"></div>Techno</div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
-                </div>
-              </article>
-              <article class="flex-shrink max-w-full w-full sm:w-1/2">
+                </article>
+                @endforeach
+              {{-- <article class="flex-shrink max-w-full w-full sm:w-1/2">
                 <div class="relative hover-img max-h-48 overflow-hidden">
                   <a href="#">
                     <img class="max-w-full w-full mx-auto h-auto" src="src/img/dummy/img3.jpg" alt="Image description">
@@ -106,7 +110,7 @@
                     </div>
                   </div>
                 </div>
-              </article>
+              </article> --}}
             </div>
           </div>
         </div>
@@ -493,7 +497,7 @@
                     <a href="#">
                       <h2 class="text-3xl font-bold capitalize text-white mb-3">Amazon Shoppers Are Ditching Designer Belts for This Best-Selling</h2>
                     </a>
-                    <p class="text-gray-100 hidden sm:inline-block">This is a wider card with supporting text below as a natural lead-in to additional content. This very helpfull for generate default content..</p>                                                  
+                    <p class="text-gray-100 hidden sm:inline-block">This is a wider card with supporting text below as a natural lead-in to additional content. This very helpfull for generate default content..</p>
                     <!-- author and date -->
                     <div class="pt-2">
                       <div class="text-gray-100"><div class="inline-block h-3 border-l-2 border-red-600 mr-2"></div>Europe</div>
@@ -651,7 +655,7 @@
                     <a href="#">
                       <h2 class="text-3xl font-bold capitalize text-white mb-3">Amazon Shoppers Are Ditching Designer Belts for This Best-Selling</h2>
                     </a>
-                    <p class="text-gray-100 hidden sm:inline-block">This is a wider card with supporting text below as a natural lead-in to additional content. This very helpfull for generate default content..</p>                                                  
+                    <p class="text-gray-100 hidden sm:inline-block">This is a wider card with supporting text below as a natural lead-in to additional content. This very helpfull for generate default content..</p>
                     <!-- author and date -->
                     <div class="pt-2">
                       <div class="text-gray-100"><div class="inline-block h-3 border-l-2 border-red-600 mr-2"></div>Europe</div>
@@ -806,7 +810,7 @@
   <script src="src/vendors/glightbox/dist/js/glightbox.min.js"></script>
   <script src="src/vendors/@splidejs/splide/dist/js/splide.min.js"></script>
   <script src="src/vendors/@splidejs/splide-extension-video/dist/js/splide-extension-video.min.js"></script>
-  
+
   <!-- Start development js -->
   <script src="src/js/theme.js"></script>
   <!-- End development js -->
