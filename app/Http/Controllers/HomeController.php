@@ -8,11 +8,17 @@ use SimplePie\Item;
 
 class HomeController extends Controller
 {
-    function index() {
-        $items = News::all()->toArray();
+    function index()
+    {
+        $items = News::with('category')
+            ->get()
+            ->toArray();
 
-        $mainHero = $items[0];
-        $fourHeros = array_slice($items, 1, 4);
-        return view('pages.home', compact('fourHeros', 'mainHero'));
+        if (!empty($items)) {
+            $mainHero = $items[0];
+            $fourHeroes = array_slice($items, 1, 4);
+            return view('pages.home', compact('fourHeroes', 'mainHero'));
+        }
+        return view('pages.home');
     }
 }
