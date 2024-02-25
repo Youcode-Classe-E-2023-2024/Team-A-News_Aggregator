@@ -71,11 +71,6 @@ Route::delete('/category/{id}', [CategoryController::class, 'destroy'])->name('c
 
 Route::put('/categories/{id}', [CategoryController::class, 'update'])->name('categories.update');
 
-Route::get('/x', function () {
-    $cat = \App\Models\Category::all();
-    return view('x', ['categories' => $cat]);
-});
-
 Route::get('/favorite', function () {
     return view('pages.favorite');
 });
