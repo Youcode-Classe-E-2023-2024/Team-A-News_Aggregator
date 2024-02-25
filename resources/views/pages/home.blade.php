@@ -33,7 +33,7 @@
                 <img class="max-w-full w-full mx-auto h-auto" src="src/img/dummy/img1.jpg" alt="Image description">
               </a>
               <div class="absolute px-5 pt-8 pb-5 bottom-0 w-full bg-gradient-cover">
-                <a href="#">
+                <a href="/news/{{$mainHero['id']}}">
                   <h2 class="text-3xl font-bold capitalize text-white mb-3">{{$mainHero["title"]}}</h2>
                 </a>
                 <p class="text-gray-100 hidden sm:inline-block">This is a wider card with supporting text below as a natural lead-in to additional content. This very helpfull for generate default content..</p>
