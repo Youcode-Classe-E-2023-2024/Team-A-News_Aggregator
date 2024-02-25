@@ -48,7 +48,7 @@
           <div class="flex-shrink max-w-full w-full lg:w-1/2">
             <div class="box-one flex flex-row flex-wrap">
 
-                @foreach ($fourHeros as $hero)
+                @foreach ($fourHeroes as $hero)
 
                 <article class="flex-shrink max-w-full w-full sm:w-1/2">
                     <div class="relative hover-img max-h-48 overflow-hidden">
