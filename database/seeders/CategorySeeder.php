@@ -18,7 +18,6 @@ class CategorySeeder extends Seeder
             ['category' => 'Politics'],
             ['category' => 'Technology'],
             ['category' => 'Sports'],
-            // Add more categories as needed
         ];
 
         foreach ($categories as $category) {
