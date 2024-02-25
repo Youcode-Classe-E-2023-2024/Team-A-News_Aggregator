@@ -10,13 +10,15 @@ class HomeController extends Controller
 {
     function index()
     {
-        $items = News::with('category')
+        $items = News::query()
+            ->select('news.*', 'categories.*')
+            ->leftJoin('categories', 'news.category', '=', 'categories.id')
+            ->orderBy('news.created_at', 'desc')
             ->get()
             ->toArray();
 
         if (!empty($items)) {
             $mainHero = $items[0];
-/*            dd($mainHero);*/
             $fourHeroes = array_slice($items, 1, 4);
             return view('pages.home', compact('fourHeroes', 'mainHero'));
         }
