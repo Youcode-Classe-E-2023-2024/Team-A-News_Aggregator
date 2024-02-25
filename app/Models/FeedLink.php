@@ -13,6 +13,7 @@ class FeedLink extends Model
         'link',
         'image_url',
         'description',
-        'title'
+        'title',
+        'category'
     ];
 }
