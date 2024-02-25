@@ -14,7 +14,8 @@ class feedController extends Controller
     {
 
         $request->validate([
-            'link' => 'required|url'
+            'link' => 'required|url',
+            'category' => 'required'
         ]);
         $f = FeedReader::read($request->link);
         $result = [
@@ -25,7 +26,7 @@ class feedController extends Controller
         ];
 
         $feed = FeedLink::create($result);
-        $this->storeLinkContent($f, $result, $feed->id, $category);
+        $this->storeLinkContent($f, $result, $feed->id, $request->category);
         return back();
     }
 
