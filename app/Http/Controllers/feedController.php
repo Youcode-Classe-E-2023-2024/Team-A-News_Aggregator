@@ -42,14 +42,14 @@ class feedController extends Controller
             $news = News::create([
                 'title' => $i['title'],
                 'description' => $i['description'],
-                'category' => $category,
+                'category_id' => $category,
                 'thumbnail' => isset($i['thumbnail']['url']) ? $i['thumbnail']['url'] : '',
                 'date' => $i['date'],
                 'link' => $i['link'],
                 'feed_id' => $feed_id
             ]);
 
-                dd($news);
+
             $result['items'][] = $i;
         }
     }
