@@ -28,13 +28,13 @@ class HomeController extends Controller
         $userId = Auth::id();
         $user = User::with('userinterest')->find($userId);
 
-        $preferredCategoryIds = isset($user) ? $user->userinterest->pluck('category_id') : [];
+        $preferredCategoryIds = isset($user) ? $user->userinterest->pluck('category_id')->flatten()->toArray() : [];
 
         if (count($preferredCategoryIds) === 0) {
             $preferredCategoryIds = Category::all()->pluck('id')->toArray();
             // here to make the checker true
         }
-        $cacheKey = Auth::check() ? "user_{$user->id}_categories_" . implode(',', $preferredCategoryIds->flatten()->toArray()) : '';
+        $cacheKey = Auth::check() ? "user_{$user->id}_categories_" . implode(',', $preferredCategoryIds) : '';
         $filteredNews = Cache::get($cacheKey);
         if (!$filteredNews) {
             $filteredNews = News::whereHas('category', function ($query) use ($preferredCategoryIds) {

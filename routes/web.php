@@ -83,7 +83,7 @@ Route::delete('/category/{id}', [CategoryController::class, 'destroy'])->name('c
 Route::put('/categories/{id}', [CategoryController::class, 'update'])->name('categories.update');
 
 
-Route::get('/news/{news_id}', [NewsController::class, 'index']);
+Route::get('/news/{slug}', [NewsController::class, 'index'])->name('news.show');
 
 Route::get('/test', function () {
     $categories = \App\Models\Category::all();

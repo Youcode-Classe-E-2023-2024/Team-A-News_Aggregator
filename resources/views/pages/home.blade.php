@@ -33,7 +33,7 @@
                 <img class="max-w-full w-full mx-auto h-auto" src="src/img/dummy/img1.jpg" alt="Image description">
               </a>
               <div class="absolute px-5 pt-8 pb-5 bottom-0 w-full bg-gradient-cover">
-                <a href="/news/{{$mainHero['id']}}">
+                <a href="{{route('news.show', $mainHero["slug"])}}">
                   <h2 class="text-3xl font-bold capitalize text-white mb-3">{{$mainHero["title"]}}</h2>
                 </a>
                 <p class="text-gray-100 hidden sm:inline-block">This is a wider card with supporting text below as a natural lead-in to additional content. This very helpfull for generate default content..</p>
@@ -51,7 +51,7 @@
                 @foreach ($fourHeroes as $hero)
                 <article class="flex-shrink max-w-full w-full sm:w-1/2">
                     <div class="relative hover-img max-h-48 overflow-hidden">
-                        <a href="/news/{{$hero['id']}}">
+                        <a href="{{route('news.show', $mainHero["slug"])}}">
                             <img class="max-w-full w-full mx-auto h-auto" src="src/img/dummy/img2.jpg" alt="Image description">
                         </a>
                         <div class="absolute px-4 pt-7 pb-4 bottom-0 w-full bg-gradient-cover">

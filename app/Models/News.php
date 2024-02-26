@@ -15,8 +15,14 @@ class News extends Model
         'feed_id',
         'link',
         'date',
-        'category_id'
+        'category_id',
+        'slug'
     ];
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 
     function category() {
         return $this->belongsTo(Category::class);

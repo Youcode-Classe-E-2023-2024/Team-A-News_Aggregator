@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Models\FeedLink;
 use App\Models\News;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Vedmant\FeedReader\Facades\FeedReader;
 
 class feedController extends Controller
@@ -46,7 +47,8 @@ class feedController extends Controller
                 'thumbnail' => isset($i['thumbnail']['url']) ? $i['thumbnail']['url'] : '',
                 'date' => $i['date'],
                 'link' => $i['link'],
-                'feed_id' => $feed_id
+                'feed_id' => $feed_id,
+                "slug" => Str::slug($i['title'], '-')
             ]);
 
             $result['items'][] = $i;
