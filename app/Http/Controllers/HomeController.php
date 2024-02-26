@@ -12,7 +12,7 @@ class HomeController extends Controller
     {
         $items = News::query()
             ->select('news.*', 'categories.category')
-            ->leftJoin('categories', 'news.category', '=', 'categories.id')
+            ->leftJoin('categories', 'news.category_id', '=', 'categories.id')
             ->orderBy('news.created_at', 'desc')
             ->get()
             ->toArray();

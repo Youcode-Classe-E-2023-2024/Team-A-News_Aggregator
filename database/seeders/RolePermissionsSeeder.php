@@ -11,8 +11,7 @@ class RolePermissionsSeeder extends Seeder
 {
     private $roles = [
         'Admin',
-        'Member',
-        'Guest',
+        'Member'
     ];
 
     private $permissions = [
@@ -37,15 +36,5 @@ class RolePermissionsSeeder extends Seeder
         }
 
         Role::findByName('Admin')->givePermissionTo($this->permissions);
-        Role::findByName('Editor')->givePermissionTo([
-
-            //
-
-        ]);
-        Role::findByName('Guest')->givePermissionTo([
-
-            //
-
-        ]);
     }
 }
