@@ -78,3 +78,8 @@ Route::get('/favorite', function () {
 });
 
 Route::get('/news/{news_id}', [NewsController::class, 'index']);
+
+Route::get('/test', function () {
+    $categories = \App\Models\Category::all();
+    return view('components.intrest_pop_up', compact("categories"));
+});
