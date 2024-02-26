@@ -5,8 +5,8 @@
         <div class="max-w-7xl w-full mx-auto">
             <div class="grid lg:grid-cols-2 items-center gap-10">
                 <div class="mt-10">
-                    <h2 class="md:text-4xl text-3xl font-extrabold mb-6">{{ $news['title'] }}</h2>
-                    <p>{{ $news['description'] }}</p>
+                    {{--                    <h2 class="md:text-4xl text-3xl font-extrabold mb-6">{{ $news['title'] }}</h2>--}}
+                    {{--                    <p>{{ $news['description'] }}</p>--}}
                 </div>
             </div>
         </div>
@@ -23,16 +23,15 @@
                         <div
                             class="flex-col w-full py-4 mx-auto mt-3 bg-white border-b-2 ml-3 border-r-2 border-gray-200 sm:px-4 sm:py-4 md:px-4 sm:rounded-lg sm:shadow-sm md:w-3/3">
                             <div class="flex flex-row md-10">
-                                <img class="w-12 h-12 border-2 border-gray-300 rounded-full" alt="Anonymous's avatar"
-                                     src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&faces=1&faceindex=1&facepad=2.5&w=500&h=500&q=80">
                                 <div class="flex-col mt-1 ml-3">
-                                    <div class="flex items-center flex-1 font-bold leading-tight">Anonymous
-                                        <span class="ml-2 text-xs font-normal text-gray-500">3 days ago</span>
-                                    </div>
-                                    @foreach($post->comments as $comment)
+                                    <p>hellooooooooooooooooo</p>
+                                    @foreach($comments as $comment)
+{{--                                        <img class="w-12 h-12 border-2 border-gray-300 rounded-full"--}}
+{{--                                             alt="Anonymous's avatar"--}}
+{{--                                             src="{{ $user['profile_image'] }}">--}}
 
                                         <div class="flex-1 mt-1 text-sm font-medium leading-loose text-gray-600">
-                                            {{ $comment->content }}
+                                            {{ $comment->comment}}
                                         </div>
 
                                     @endforeach
@@ -42,21 +41,15 @@
                                           method="POST"
                                     >
                                         @csrf
+                                        <div class="flex items-center flex-1 font-bold leading-tight">Anonymous</div>
                                         <label for="comment" class="block text-sm font-medium text-gray-700">Add a
                                             comment:</label>
                                         <div
                                             class="bg-white flex px-1 py-1 rounded-full border border-blue-500 overflow-hidden my-3 font-[sans-serif]">
                                             <textarea type='email' name="content" placeholder='Add your comment here...'
                                                       class="outline-none bg-white pl-4 text-sm w-full"></textarea>
-                                            {{--                                            <input type="hidden" name="post_id" value="{{ $post->id }}">--}}
+                                            {{--<input type="hidden" name="post_id" value="{{ $post->id }}">--}}
                                         </div>
-                                        <div class="mt-3">
-                                            <button type='button'
-                                                    class="bg-blue-600 hover:bg-blue-700 transition-all text-white text-sm rounded-full px-5 py-2.5">
-                                                Submit
-                                            </button>
-                                        </div>
-
                                         <div class="mt-3">
                                             <button type='submit'
                                                     class="bg-blue-600 hover:bg-blue-700 transition-all text-white text-sm rounded-full px-5 py-2.5">
