@@ -17,7 +17,7 @@ class detailed extends Component
 
     public function __construct($news, $likes)
     {
-        $this->user_id = auth()->user()->id;
+        $this->user_id = auth()->user()->id ?? null;
         $this->news = $news;
         $this->likes = $likes;
     }

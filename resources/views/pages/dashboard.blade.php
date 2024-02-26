@@ -79,6 +79,7 @@
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+                            @foreach ($users as $user)
                             <tr
                                 class="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400">
                                 <td class="px-4 py-3">
@@ -92,15 +93,19 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td class="px-4 py-3 text-sm">hafsa</td>
-                                <td class="px-4 py-3 text-sm">hafsa@gmail.com</td>
-                                <td class="px-4 py-3 text-sm">Admin</td>
-                                <td class="px-4 py-3 text-sm">15-01-2021</td>
+                                <td class="px-4 py-3 text-sm">{{ $user->name }}</td>
+                                <td class="px-4 py-3 text-sm">{{ $user->email }}</td>
+                                <td class="px-4 py-3 text-sm">{{ $user->role }}</td>
+                                <td class="px-4 py-3 text-sm">{{ $user->created_at->format('d-m-Y') }}</td>
                                 <td class="px-4 py-3 text-xs text-center">
+                                    <form action="{{ route('users.destroy', $user->id) }}" method="POST" onsubmit="return confirm('Are you sure?');">
+                                        @csrf
+                                        @method('DELETE')
                                     <button type="submit"
                                         class=" bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded">
                                         Delete User
                                     </button>
+                                    </form>
                                     <button data-modal-target="crud-modal" data-modal-toggle="crud-modal"
                                         class=" bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
                                         type="button">
@@ -109,6 +114,7 @@
 
                                 </td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -144,30 +150,26 @@
                     <span class="sr-only">Close modal</span>
                 </button>
             </div>
-            <form class="p-4 md:p-5">
+            <form class="p-4 md:p-5" method="POST" action="{{ route('user.updateRole') }}">
+                @csrf 
                 <div class="grid gap-4 mb-4 grid-cols-1">
                     <div class="sm:col-span-1">
-                        <label for="category"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Role</label>
-                        <select id="category"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                            <option selected="">Select A Role</option>
-                            <option value="TV">Admin</option>
-                            <option value="PC">User</option>
+                        <label for="role" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Role</label>
+                        <select id="role" name="role"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <option value="">Select A Role</option>
+                            <option value="Admin">Admin</option>
+                            <option value="User">User</option>
                         </select>
                     </div>
                 </div>
-                <button type="submit"
-                    class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                    <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
-                            clip-rule="evenodd"></path>
-                    </svg>
+                <!-- Assuming you know the user's ID you want to update -->
+                <input type="hidden" name="userId" value="{{ $user->id }}">
+                <button type="submit" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                     Change the Role
                 </button>
             </form>
+            
         </div>
     </div>
 </div>

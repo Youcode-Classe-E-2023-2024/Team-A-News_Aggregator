@@ -45,11 +45,10 @@ class RegisterController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        // Create a folder for the user's profile images within the public disk
+
         $folderName = 'user_profiles/' . $user->id;
         Storage::disk('public')->makeDirectory($folderName);
-
-        // Store the profile image in the user's folder
+        
         $profileImagePath = $request->file('profile_image')->store($folderName, 'public');
         $user->profile_image = $profileImagePath;
         $user->save();

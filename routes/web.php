@@ -2,10 +2,12 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\feedController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
 use App\Models\News;
@@ -46,9 +48,16 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile', function () {
         return view('pages.Profile');
     });
+    Route::delete('/profile', [UserController::class, 'destroy'])->name('profile.destroy');
+    Route::delete('/profile', [UserController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/profile/update', [UserController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile/update', [UserController::class, 'update'])->name('profile.update');
 
-   Route::post('/feed/create', [feedController::class, "store"])->name('create_feed');
+
+    Route::post('/feed/create', [feedController::class, "store"])->name('create_feed');
    Route::post('/feed/delete/{id}', [feedController::class, "destroy"])->name('delete_feed');
+
+    Route::get('/favorite', [FavoriteController::class, 'index']);
 
 });
 
@@ -73,9 +82,6 @@ Route::delete('/category/{id}', [CategoryController::class, 'destroy'])->name('c
 
 Route::put('/categories/{id}', [CategoryController::class, 'update'])->name('categories.update');
 
-Route::get('/favorite', function () {
-    return view('pages.favorite');
-});
 
 Route::get('/news/{news_id}', [NewsController::class, 'index']);
 
@@ -83,3 +89,5 @@ Route::get('/test', function () {
     $categories = \App\Models\Category::all();
     return view('components.intrest_pop_up', compact("categories"));
 });
+Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+Route::post('/user/updateRole', [UserController::class, 'updateRole'])->name('user.updateRole');
