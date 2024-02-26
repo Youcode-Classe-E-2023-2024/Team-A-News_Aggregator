@@ -6,6 +6,7 @@ use App\Http\Controllers\feedController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
 use App\Models\News;
@@ -46,8 +47,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile', function () {
         return view('pages.Profile');
     });
+    Route::delete('/profile', [UserController::class, 'destroy'])->name('profile.destroy');
+    Route::delete('/profile', [UserController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/profile/update', [UserController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile/update', [UserController::class, 'update'])->name('profile.update');
 
-   Route::post('/feed/create', [feedController::class, "store"])->name('create_feed');
+
+    Route::post('/feed/create', [feedController::class, "store"])->name('create_feed');
    Route::post('/feed/delete/{id}', [feedController::class, "destroy"])->name('delete_feed');
 
 });
