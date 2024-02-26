@@ -78,3 +78,11 @@ Route::put('/categories/{id}', [CategoryController::class, 'update'])->name('cat
 
 
 Route::get('/news/{news_id}', [NewsController::class, 'index']);
+
+Route::get('home/detailed', function () {
+    return view('pages.detailed');
+});
+
+Route::post('home/detailed', [CommentController::class, "show"])->name('comments.store');
+Route::post('home/detailed', [CommentController::class, "store"])->name('comments.store');
+
