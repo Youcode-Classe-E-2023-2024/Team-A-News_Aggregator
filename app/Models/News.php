@@ -15,7 +15,7 @@ class News extends Model
         'feed_id',
         'link',
         'date',
-        'category'
+        'category_id'
     ];
 
     function category() {

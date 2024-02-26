@@ -8,11 +8,15 @@
 
     ////
     likeBtn.addEventListener('click', () => {
-        if(isFavLiked){
-            liking('unlike', 'DELETE', news_id, user_id);
-        }
-        if(!isFavLiked){
-            liking('like', 'POST', news_id, user_id);
+        if (user_id !== '') {
+            if (isFavLiked) {
+                liking('unlike', 'DELETE', news_id, user_id);
+            }
+            if (!isFavLiked) {
+                liking('like', 'POST', news_id, user_id);
+            }
+        } else {
+            window.document.location.href = '/login';
         }
     });
     //

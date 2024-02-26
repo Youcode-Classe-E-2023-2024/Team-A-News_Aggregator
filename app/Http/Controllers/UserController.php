@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use Symfony\Component\HttpKernel\Profiler\Profile;
+use App\Models\User;
 
 
 class UserController extends Controller
@@ -35,14 +35,6 @@ class UserController extends Controller
         } else {
             return back()->with('error', 'error, please select interests');
         }
-    }
-
-    public function destroy()
-    {
-        $profile = Auth::user();
-
-        $profile->delete();
-        return redirect()->back()->with('success', 'Profile deleted successfully');
     }
 
     public function edit()
@@ -88,5 +80,24 @@ class UserController extends Controller
         $user->save();
 
         return redirect()->back()->with('success', 'Profile updated successfully');
+    public function destroy($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return back()->with('success', 'User deleted successfully.');
+    }
+    public function updateRole(Request $request)
+    {
+        $request->validate([
+            'role' => 'required|string',
+            'userId' => 'required|int'
+        ]);
+    
+        $user = User::findOrFail($request->userId);
+        $user->role = $request->role;
+        $user->save();
+    
+        return back()->with('success', 'User role updated successfully.');
     }
 };
