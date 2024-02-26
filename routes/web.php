@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FavoriteController;
@@ -83,6 +84,6 @@ Route::get('home/detailed', function () {
     return view('pages.detailed');
 });
 
-Route::post('home/detailed', [CommentController::class, "show"])->name('comments.store');
+Route::post('home/detailed', [CommentController::class, "show"]);
 Route::post('home/detailed', [CommentController::class, "store"])->name('comments.store');
 
