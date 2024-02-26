@@ -16,7 +16,7 @@
                 liking('like', 'POST', news_id, user_id);
             }
         } else {
-            alert('You must login so you can like the news !!!');
+            window.document.location.href = '/login';
         }
     });
     //

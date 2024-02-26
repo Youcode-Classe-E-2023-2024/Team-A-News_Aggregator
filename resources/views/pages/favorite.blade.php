@@ -4,7 +4,7 @@
     <x-link_home />
 
     <x-navbar_home />
-    <x-favorite />
+    <x-favorite :favorites="$favorites"/>
     <x-footer_home />
 @endsection
 

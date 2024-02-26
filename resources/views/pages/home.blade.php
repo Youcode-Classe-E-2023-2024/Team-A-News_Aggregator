@@ -49,10 +49,9 @@
             <div class="box-one flex flex-row flex-wrap">
 
                 @foreach ($fourHeroes as $hero)
-
                 <article class="flex-shrink max-w-full w-full sm:w-1/2">
                     <div class="relative hover-img max-h-48 overflow-hidden">
-                        <a href="#">
+                        <a href="/news/{{$hero['id']}}">
                             <img class="max-w-full w-full mx-auto h-auto" src="src/img/dummy/img2.jpg" alt="Image description">
                         </a>
                         <div class="absolute px-4 pt-7 pb-4 bottom-0 w-full bg-gradient-cover">

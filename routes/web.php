@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\feedController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
@@ -50,6 +51,8 @@ Route::middleware(['auth'])->group(function () {
    Route::post('/feed/create', [feedController::class, "store"])->name('create_feed');
    Route::post('/feed/delete/{id}', [feedController::class, "destroy"])->name('delete_feed');
 
+    Route::get('/favorite', [FavoriteController::class, 'index']);
+
 });
 
 
@@ -73,8 +76,5 @@ Route::delete('/category/{id}', [CategoryController::class, 'destroy'])->name('c
 
 Route::put('/categories/{id}', [CategoryController::class, 'update'])->name('categories.update');
 
-Route::get('/favorite', function () {
-    return view('pages.favorite');
-});
 
 Route::get('/news/{news_id}', [NewsController::class, 'index']);

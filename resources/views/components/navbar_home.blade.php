@@ -5,12 +5,12 @@
        <div class="xl:container mx-auto px-3 sm:px-4 xl:px-2">
          <div class="flex justify-between">
            <div class="mx-w-10 text-2xl font-bold capitalize text-white flex items-center">News</div>
-           
+
            <div class="flex flex-row">
              <!-- nav menu -->
              <ul class="navbar hidden lg:flex lg:flex-row text-gray-400 text-sm items-center font-bold">
                <li class="active relative border-l border-gray-800 hover:bg-gray-900">
-                 <a class="block py-3 px-6 border-b-2 border-transparent" href="#">Home</a>
+                 <a class="block py-3 px-6 border-b-2 border-transparent" href="/">Home</a>
                </li>
                <li class="dropdown relative border-l border-gray-800 hover:bg-gray-900">
                  <a class="block py-3 px-6 border-b-2 border-transparent" href="#">Pages</a>
@@ -76,16 +76,27 @@
                  <a class="block py-3 px-6 border-b-2 border-transparent" href="#">Travel</a>
                </li>
                <li class="relative border-l border-gray-800 hover:bg-gray-900">
-                 <a class="block py-3 px-6 border-b-2 border-transparent" href="#">Techno</a>
+                   @auth
+                     <a class="block py-3 px-6 border-b-2 border-transparent" href="/profile">Profile</a>
+                   @else
+                     <a class="block py-3 px-6 border-b-2 border-transparent" href="#">Techno</a>
+                   @endauth
                </li>
                <li class="relative border-l border-gray-800 hover:bg-gray-900">
-                 <a class="block py-3 px-6 border-b-2 border-transparent" href="#">Worklife</a>
+                 <a class="block py-3 px-6 border-b-2 border-transparent" href="/dashboard">Dashboard</a>
                </li>
                <li class="relative border-l border-gray-800 hover:bg-gray-900">
-                 <a class="block py-3 px-6 border-b-2 border-transparent" href="#">Future</a>
+                 <a class="block py-3 px-6 border-b-2 border-transparent" href="/favorite">Favorite</a>
                </li>
                <li class="relative border-l border-gray-800 hover:bg-gray-900">
-                 <a class="block py-3 px-6 border-b-2 border-transparent" href="#">More</a>
+                   @auth
+                       <form action="{{ route('logout') }}" method="post">
+                           @csrf
+                             <button type="submit" class="block py-3 px-6 border-b-2 border-transparent">Logout</button>
+                       </form>
+                   @else
+                     <a class="block py-3 px-6 border-b-2 border-transparent" href="/login">Login</a>
+                   @endauth
                </li>
              </ul>
 
