@@ -80,4 +80,6 @@ Route::get('/favorite', function () {
 Route::get('/news/{news_id}', [NewsController::class, 'index']);
 
 Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+Route::post('/user/updateRole', [UserController::class, 'updateRole'])->name('user.updateRole');
+
 

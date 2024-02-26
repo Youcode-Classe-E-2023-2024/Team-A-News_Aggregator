@@ -15,4 +15,5 @@ class DashboardController extends Controller
         $users = User::all();
         return view('pages.dashboard', compact('feed_links', 'categories', 'users'));
     }
+    
 }

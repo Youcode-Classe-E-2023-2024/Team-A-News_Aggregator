@@ -42,4 +42,17 @@ class UserController extends Controller
 
         return back()->with('success', 'User deleted successfully.');
     }
+    public function updateRole(Request $request)
+    {
+        $request->validate([
+            'role' => 'required|string',
+            'userId' => 'required|int'
+        ]);
+    
+        $user = User::findOrFail($request->userId);
+        $user->role = $request->role;
+        $user->save();
+    
+        return back()->with('success', 'User role updated successfully.');
+    }
 };
