@@ -79,6 +79,7 @@
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+                            @foreach ($users as $user)
                             <tr
                                 class="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400">
                                 <td class="px-4 py-3">
@@ -92,10 +93,10 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td class="px-4 py-3 text-sm">hafsa</td>
-                                <td class="px-4 py-3 text-sm">hafsa@gmail.com</td>
-                                <td class="px-4 py-3 text-sm">Admin</td>
-                                <td class="px-4 py-3 text-sm">15-01-2021</td>
+                                <td class="px-4 py-3 text-sm">{{ $user->name }}</td>
+                                <td class="px-4 py-3 text-sm">{{ $user->email }}</td>
+                                <td class="px-4 py-3 text-sm">{{ $user->role }}</td>
+                                <td class="px-4 py-3 text-sm">{{ $user->created_at->format('d-m-Y') }}</td>
                                 <td class="px-4 py-3 text-xs text-center">
                                     <button type="submit"
                                         class=" bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded">
@@ -109,6 +110,7 @@
 
                                 </td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
