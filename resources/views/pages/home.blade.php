@@ -38,7 +38,7 @@
                 </a>
                 <p class="text-gray-100 hidden sm:inline-block">This is a wider card with supporting text below as a natural lead-in to additional content. This very helpfull for generate default content..</p>
                 <div class="pt-2">
-                  <div class="text-gray-100"><div class="inline-block h-3 border-l-2 border-red-600 mr-2"></div>{{$mainHero["category"]}}</div>
+                  <div class="text-gray-100"><div class="inline-block h-3 border-l-2 border-red-600 mr-2"></div>{{$mainHero["category"]["category"]}}</div>
                 </div>
               </div>
             </div>

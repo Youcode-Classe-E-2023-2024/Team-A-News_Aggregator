@@ -10,7 +10,7 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('user_interest', function (Blueprint $table) {
+        Schema::create('user_interests', function (Blueprint $table) {
             $table->id();
             $table->bigInteger("user_id")->unsigned();
             $table->bigInteger("category_id")->unsigned();

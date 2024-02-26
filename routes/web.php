@@ -85,7 +85,9 @@ Route::put('/categories/{id}', [CategoryController::class, 'update'])->name('cat
 
 Route::get('/news/{news_id}', [NewsController::class, 'index']);
 
+Route::get('/test', function () {
+    $categories = \App\Models\Category::all();
+    return view('components.intrest_pop_up', compact("categories"));
+});
 Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
 Route::post('/user/updateRole', [UserController::class, 'updateRole'])->name('user.updateRole');
-
-
