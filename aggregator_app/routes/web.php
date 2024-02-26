@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\feedController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
@@ -57,4 +58,8 @@ Route::get('/about', function () {
 });
 
 /*detailed*/
-Route::get('home/detailed', [Authentification::class, 'detailed'])->name('form_detailed');
+Route::get('home/detailed', function () {
+    return view('pages.detailed');
+});
+
+Route::post('home/detailed', [CommentController::class, "store"])->name('comments.store');
