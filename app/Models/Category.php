@@ -17,4 +17,8 @@ class Category extends Model
     {
         return $this->hasMany(News::class);
     }
+
+    function userInterest() {
+        return $this->hasMany(UserInterest::class);
+    }
 }
