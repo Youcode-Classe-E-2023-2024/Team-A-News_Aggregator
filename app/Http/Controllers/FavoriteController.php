@@ -7,10 +7,22 @@ use Illuminate\Http\Request;
 
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 
 class FavoriteController extends Controller
 {
+    public function index()
+    {
+        $favorites = DB::table('favorites')
+            ->join('news', 'favorites.news_id', '=', 'news.id')
+            ->join('categories', 'news.category', '=', 'categories.id')
+            ->select('news.*', 'categories.category')
+            ->where('favorites.user_id', auth()->user()->id)
+            ->get();
+        return view('pages.favorite', ['favorites' => $favorites]);
+    }
+
     public function like(Request $request)
     {
         $is_liked = Favorite::where('news_id', $request->news_id)

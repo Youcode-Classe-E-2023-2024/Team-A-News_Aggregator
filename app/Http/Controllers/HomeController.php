@@ -11,7 +11,7 @@ class HomeController extends Controller
     function index()
     {
         $items = News::query()
-            ->select('news.*', 'categories.*')
+            ->select('news.*', 'categories.category')
             ->leftJoin('categories', 'news.category', '=', 'categories.id')
             ->orderBy('news.created_at', 'desc')
             ->get()
