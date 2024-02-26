@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\UserInterest;
+
 //use Dotenv\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,7 +17,7 @@ class UserController extends Controller
         $u = UserInterest::where('user_id', Auth::user()->id)->get();
 
         if (isset($request->interests)) {
-            if (count($request->interests) <= 4 || count($u) <= 4 ) {
+            if (count($request->interests) <= 4 || count($u) <= 4) {
                 return back()->with('error', 'error, user already have enough interests');
             }
             Validator::make($request->all(), [
@@ -25,13 +26,15 @@ class UserController extends Controller
             ]);
 
             foreach ($request->interests as $interest)
-            UserInterest::create([
-                'user_id' => Auth::user()->id,
-                'category_id' => $interest
-            ]);
+                UserInterest::create([
+                    'user_id' => Auth::user()->id,
+                    'category_id' => $interest
+                ]);
             return back()->with('success', 'interests added successfully');
         } else {
             return back()->with('error', 'error, please select interests');
         }
     }
-};
+}
+
+;
