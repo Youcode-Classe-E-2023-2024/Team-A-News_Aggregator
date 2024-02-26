@@ -7,6 +7,7 @@ use App\Models\UserInterest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use App\Models\User;
 
 
 class UserController extends Controller
@@ -33,5 +34,12 @@ class UserController extends Controller
         } else {
             return back()->with('error', 'error, please select interests');
         }
+    }
+    public function destroy($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return back()->with('success', 'User deleted successfully.');
     }
 };

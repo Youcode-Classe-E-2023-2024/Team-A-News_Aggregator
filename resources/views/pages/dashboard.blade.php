@@ -98,10 +98,14 @@
                                 <td class="px-4 py-3 text-sm">{{ $user->role }}</td>
                                 <td class="px-4 py-3 text-sm">{{ $user->created_at->format('d-m-Y') }}</td>
                                 <td class="px-4 py-3 text-xs text-center">
+                                    <form action="{{ route('users.destroy', $user->id) }}" method="POST" onsubmit="return confirm('Are you sure?');">
+                                        @csrf
+                                        @method('DELETE')
                                     <button type="submit"
                                         class=" bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded">
                                         Delete User
                                     </button>
+                                    </form>
                                     <button data-modal-target="crud-modal" data-modal-toggle="crud-modal"
                                         class=" bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
                                         type="button">
