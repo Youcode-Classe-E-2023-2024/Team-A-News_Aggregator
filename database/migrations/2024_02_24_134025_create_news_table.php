@@ -15,13 +15,13 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
-            $table->bigInteger('category')->unsigned();
+            $table->bigInteger('category_id')->unsigned();
             $table->string('thumbnail')->nullable();
             $table->string('date');
             $table->string('link');
             $table->bigInteger('feed_id')->unsigned();
             $table->foreign('feed_id')->references('id')->on('feed_links')->onDelete('cascade');;
-            $table->foreign('category')->references('id')->on('categories');
+            $table->foreign('category_id')->references('id')->on('categories');
             $table->timestamps();
         });
     }
