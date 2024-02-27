@@ -16,7 +16,7 @@ class FavoriteController extends Controller
     {
         $favorites = DB::table('favorites')
             ->join('news', 'favorites.news_id', '=', 'news.id')
-            ->join('categories', 'news.category', '=', 'categories.id')
+            ->join('categories', 'news.category_id', '=', 'categories.id')
             ->select('news.*', 'categories.category')
             ->where('favorites.user_id', auth()->user()->id)
             ->get();

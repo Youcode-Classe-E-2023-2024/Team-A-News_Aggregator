@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use App\Models\User;
 
 
 class UserController extends Controller
@@ -80,6 +79,7 @@ class UserController extends Controller
         $user->save();
 
         return redirect()->back()->with('success', 'Profile updated successfully');
+    }
     public function destroy($id)
     {
         $user = User::findOrFail($id);
@@ -93,11 +93,11 @@ class UserController extends Controller
             'role' => 'required|string',
             'userId' => 'required|int'
         ]);
-    
+
         $user = User::findOrFail($request->userId);
         $user->role = $request->role;
         $user->save();
-    
+
         return back()->with('success', 'User role updated successfully.');
     }
 };
