@@ -23,57 +23,49 @@
                     <button data-modal-target="crud-modal3" data-modal-toggle="crud-modal3"
                         class="middle none center rounded-lg bg-red-500 mb-10 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-red-500/20 transition-all hover:shadow-lg hover:shadow-red-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                         data-ripple-light="true">
-                        Add Category
+                        Send all
                     </button>
-                    <div class="w-full overflow-hidden rounded-lg shadow-xs">
-                        <div class="w-full overflow-x-auto">
-                            <table class="w-full">
-                                <thead>
-                                    <tr
-                                        class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-                                        <th class="px-4 py-3">Category</th>
-                                        <th class="px-4 py-3">Created date</th>
-                                        <th class="px-4 py-3 text-center">Operation</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-
-                                            <tr
-                                                class="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400">
-                                                <td class="px-4 py-3 text-sm">kdoprk</td>
-                                                <td class="px-4 py-3 text-sm">
-                                                    01/02/2024</td>
-                                                <td class="px-4 py-3 text-xs text-center">
-                                                  
-                                                      
-                                                        <button type="submit"
-                                                            class=" bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded">
-                                                            Delete User
-                                                        </button>
-                                                    </form>
-                                                    <button data-modal-target="crud-modal2"
-                                                        data-modal-toggle="crud-modal2"
-                                                        class=" bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-                                                        type="button">
-                                                        Update User
-                                                    </button>
-
-                                                </td>
-                                            </tr>
-
+                    <section class="container mx-auto p-6 font-mono">
+                        <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
+                            <div class="w-full overflow-x-auto">
+                                <table class="w-full">
+                                    <thead>
                                         <tr
-                                            class="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400">
-                                            List is Empty
+                                            class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
+                                            <th class="px-4 py-3">Name</th>
+                                            <th class="px-4 py-3">Email</th>
+                                            <th class="px-4 py-3">Send</th>
+                                            <th class="px-4 py-3">Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="bg-white">
+                                        <tr class="text-gray-700">
+                                            <td class="px-4 py-3 text-sm border text-center align-middle">
+                                                <p class="font-semibold text-black">Sufyan</p>
+                                            </td>
+                                            <td class="px-4 py-3 border text-center align-middle">
+                                                <div class="flex items-center justify-center text-sm">
+                                                    <p>khawla@gmail.com</p>
+                                                </div>
+                                            </td>
+                                            <td class="px-4 py-3 text-xs border flex justify-center items-center">
+
+                                                <button data-modal-target="crud-modal3" data-modal-toggle="crud-modal3"
+                                                class="middle none center rounded-lg bg-red-500  py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-red-500/20 transition-all hover:shadow-lg hover:shadow-red-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                                data-ripple-light="true">
+                                                Send 
+                                            </button>
+
+                                            </td>
+                                            <td class="px-4 py-3 text-sm border">6/4/2000</td>
                                         </tr>
 
-                                </tbody>
-                            </table>
+
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                        </li>
-                        </ul>
-                        </nav>
-                        </span>
-                    </div>
+                    </section>
                 </div>
             </div>
 
