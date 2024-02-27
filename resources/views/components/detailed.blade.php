@@ -22,39 +22,40 @@
 {{--                comments                 --}}
                 <div class="relative flex items-center justify-center antialiased bg-white bg-gray-100 min-w-screen">
                     <div class="container px-0 mx-auto sm:px-5">
-                        <div
-                            class="flex-col w-full py-4 mx-auto mt-3 bg-white border-b-2 ml-3 border-r-2 border-gray-200 sm:px-4 sm:py-4 md:px-4 sm:rounded-lg sm:shadow-sm md:w-3/3">
-                            <div class="flex flex-row md-10">
-                                <div class="flex-col mt-1 ml-3">
+                        <div class="flex-col w-full py-4 mx-auto mt-3 bg-white border-b-2 ml-3 border-r-2 border-gray-200 sm:px-4 sm:py-4 md:px-4 sm:rounded-lg sm:shadow-sm md:w-3/3">
+                                <div class="flex-col">
 
-                                    @foreach($comments as $comment)
-                                        <div class="flex">
-                                            <div class="flex-shrink-0 mr-3">
-                                                <img class="mt-2 rounded-full w-8 h-8 sm:w-10 sm:h-10"
-                                                     src="{{ url("/storage/" . $comment->user->profile_image) }}"
-                                                     alt="{{ $comment->user->name }}"
-                                                >
+                                    <div style="height: 300px; overflow-y: auto;">
+                                        @foreach($comments as $comment)
+                                            <div class="flex mb-4">
+                                                <div class="flex-shrink-0 mr-3">
+                                                    <img class="mt-2 rounded-full w-8 h-8 sm:w-10 sm:h-10"
+                                                         src="{{ url("/storage/" . $comment->user->profile_image) }}"
+                                                         alt="{{ $comment->user->name }}">
+                                                </div>
+                                                <div
+                                                    class="flex-1 border rounded-lg px-4 py-2 sm:px-6 sm:py-4 leading-relaxed">
+                                                    <strong>{{ $comment->user->name }}</strong> <span
+                                                        class="text-xs text-gray-400">{{ $comment->created_at }}</span>
+                                                    <p class="text-sm">
+                                                        {{ $comment->comment }}
+                                                    </p>
+                                                </div>
                                             </div>
-                                            <div
-                                                class="flex-1 border rounded-lg px-4 py-2 sm:px-6 sm:py-4 leading-relaxed">
-                                                <strong>{{ $comment->user->name }}</strong> <span
-                                                    class="text-xs text-gray-400">{{ $comment->created_at }}</span>
-                                                <p class="text-sm">
-                                                    {{ $comment->comment }}
-                                                </p>
-                                            </div>
-                                        </div>
-                                    @endforeach
+                                        @endforeach
+                                    </div>
 
                                     <form class="w-full max-w-xl bg-white rounded-lg px-4 pt-2"
                                           action="{{ route('addComment') }}"
                                           method="POST">
                                         @csrf
+                                        <input type="hidden" name="news_id" value="{{ $news->id }}">
                                         <div class="flex flex-wrap -mx-3 mb-6">
                                             <div class="w-full md:w-full px-3 mb-2 mt-2">
-                                            <textarea
+                                            <input
                                                 class="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white"
-                                                name="content" placeholder='Type Your Comment' required></textarea>
+                                                name="comment" placeholder='Type Your Comment'
+                                                required>
                                             </div>
                                             <div class="w-full md:w-full flex items-start md:w-full px-3">
                                                 <div class="-mr-1">
@@ -69,7 +70,6 @@
                                     </form>
 
                                 </div>
-                            </div>
                         </div>
                     </div>
                 </div>
