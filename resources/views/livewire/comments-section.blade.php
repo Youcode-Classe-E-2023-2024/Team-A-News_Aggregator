@@ -23,8 +23,10 @@
             </div>
 
 
-            <form class="w-full max-w-xl bg-white rounded-lg px-4 pt-2">
-                <input type="hidden" name="news_id" value="{{ $news->id }}">
+            <form class="w-full max-w-xl bg-white rounded-lg px-4 pt-2"
+                 action="{{ url('/comments/addComment') }}"
+                  method="post">
+                <input type="text" name="news_id" value="{{ $news->id }}">
                 <div class="flex flex-wrap -mx-3 mb-6">
                     <div class="w-full md:w-full px-3 mb-2 mt-2">
                         <input
@@ -34,7 +36,7 @@
                     </div>
                     <div class="w-full md:w-full flex items-start md:w-full px-3">
                         <div class="-mr-1">
-                            <button type="button" wire:click="addComment"
+                            <button type="submit"
                                     class="bg-blue-700 text-white font-medium py-1 px-4 border border-gray-400 rounded-lg tracking-wide mr-1 hover:bg-blue-500"
                             >
                                 Public

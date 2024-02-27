@@ -23,20 +23,20 @@ class CommentController extends Controller
 
     public function store(Request $request)
     {
+//        dd($request);
+//        \Log::info($request->all());
+
         $request->validate([
             'comment' => 'required',
             'news_id' => 'required|exists:news,id',
         ]);
 
         $comment = new Comment();
-        $comment->news_id = $request->news_id;
-        $comment->comment = $request->comment;
+        $comment->news_id = $request->input('news_id');
+        $comment->comment = $request->input('comment');
         $comment->user_id = Auth::id();
         $comment->save();
-
-        @dd($request);
-
-        return back();
+//        return back();
     }
 
 }
