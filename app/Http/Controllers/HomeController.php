@@ -15,12 +15,10 @@ class HomeController extends Controller
     function index()
     {
         $items = $this->getCachedData();
-        if (count($items) !== 0) {
-            $mainHero = $items[0];
-            $fourHeroes = array_slice($items, 1, 4);
-            return view('pages.home', compact('fourHeroes', 'mainHero'));
-        }
-        return view('pages.home');
+        $categories = Category::all();
+        $mainHero = $items[0];
+        $fourHeroes = array_slice($items, 1, 4);
+        return view('pages.home', compact('fourHeroes', 'mainHero', 'categories'));
     }
 
     function getCachedData()
