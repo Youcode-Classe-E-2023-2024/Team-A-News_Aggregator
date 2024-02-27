@@ -8,8 +8,6 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use App\Models\User;
-
 
 class UserController extends Controller
 {
@@ -18,7 +16,7 @@ class UserController extends Controller
         $u = UserInterest::where('user_id', Auth::user()->id)->get();
 
         if (isset($request->interests)) {
-            if (count($request->interests) <= 4 || count($u) <= 4) {
+            if (count($u) <= 4) {
                 return back()->with('error', 'error, user already have enough interests');
             }
             Validator::make($request->all(), [
@@ -80,6 +78,7 @@ class UserController extends Controller
         $user->save();
 
         return redirect()->back()->with('success', 'Profile updated successfully');
+    }
     public function destroy($id)
     {
         $user = User::findOrFail($id);
@@ -93,11 +92,11 @@ class UserController extends Controller
             'role' => 'required|string',
             'userId' => 'required|int'
         ]);
-    
+
         $user = User::findOrFail($request->userId);
         $user->role = $request->role;
         $user->save();
-    
+
         return back()->with('success', 'User role updated successfully.');
     }
 };
