@@ -8,10 +8,11 @@
     <x-partiehome :fourHeroes="$fourHeroes" :mainHero="$mainHero"/>
 
 
-
-    @if(!hasInterests())
-        <x-interest_form :categories="$categories"/>
-    @endif
+    @auth()
+        @if(!hasInterests())
+            <x-interest_form :categories="$categories"/>
+        @endif
+    @endauth
 
     <!-- =========={ FOOTER }==========  -->
 
