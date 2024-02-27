@@ -19,7 +19,7 @@
                 </div>
 
                 <div class="relative flex items-center justify-center antialiased bg-white bg-gray-100 min-w-screen">
-                   <livewire:comments-section :comments="comments"/>
+                   <livewire:comments-section :comments="$comments" :news="$news"/>
                 </div>
             </div>
         </div>
