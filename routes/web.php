@@ -12,6 +12,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
 use App\Models\News;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Newsdash;
 
 /*
 |--------------------------------------------------------------------------
@@ -91,3 +92,6 @@ Route::get('/test', function () {
 });
 Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
 Route::post('/user/updateRole', [UserController::class, 'updateRole'])->name('user.updateRole');
+
+Route::get('/news', [Newsdash::class, 'index']);
+Route::delete('/news/{id}', [Newsdash::class, 'destroy'])->name('news.destroy');
