@@ -14,12 +14,14 @@ class detailed extends Component
     public $user_id;
     public $news;
     public $likes;
+    public $comments;
 
-    public function __construct($news, $likes)
+    public function __construct($news, $likes, $comments)
     {
         $this->user_id = auth()->user()->id ?? null;
         $this->news = $news;
         $this->likes = $likes;
+        $this->comments = $comments;
     }
 
     /**
