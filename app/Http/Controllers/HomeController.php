@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\News;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use SimplePie\Item;
 
 class HomeController extends Controller
@@ -23,5 +27,31 @@ class HomeController extends Controller
             return view('pages.home', compact('fourHeroes', 'mainHero'));
         }
         return view('pages.home');
+    }
+
+    function getCachedData()
+    {
+        $userId = Auth::id();
+        $user = User::with('userinterest')->find($userId);
+
+        $preferredCategoryIds = isset($user) ? $user->userinterest->pluck('category_id')->flatten()->toArray() : [];
+
+        if (count($preferredCategoryIds) === 0) {
+            $preferredCategoryIds = Category::all()->pluck('id')->toArray();
+            // here to make the checker true
+        }
+        $cacheKey = Auth::check() ? "user_{$user->id}_categories_" . implode(',', $preferredCategoryIds) : '';
+        $filteredNews = Cache::get($cacheKey);
+        if (!$filteredNews) {
+            $filteredNews = News::whereHas('category', function ($query) use ($preferredCategoryIds) {
+                $query->whereIn('id', $preferredCategoryIds);
+            })
+                ->with('category')
+                ->get()
+                ->toArray();
+
+            Cache::put($cacheKey, $filteredNews, 600); // Cache for 600 minutes
+        }
+        return $filteredNews;
     }
 }

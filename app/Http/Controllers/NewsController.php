@@ -8,11 +8,11 @@ use Illuminate\Http\Request;
 
 class NewsController extends Controller
 {
-    public function index($news_id)
+    public function index($news_slug)
     {
-        $likes = Favorite::where('news_id', $news_id)->get();
+        $news =  News::where('slug', $news_slug)->get()->first();
+        $likes = Favorite::where('news_id', $news->id)->get();
 
-        $nws =  News::where('id', $news_id)->get()->first();
-        return view('pages.detailed', ['news' => $nws, 'likes' => count($likes)]);
+        return view('pages.detailed', ['news' => $news, 'likes' => count($likes)]);
     }
 }
