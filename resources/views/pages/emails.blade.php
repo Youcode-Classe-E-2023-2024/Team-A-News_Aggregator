@@ -39,13 +39,14 @@
                                         </tr>
                                     </thead>
                                     <tbody class="bg-white">
+                                        @foreach ($users as $user)
                                         <tr class="text-gray-700">
                                             <td class="px-4 py-3 text-sm border text-center align-middle">
-                                                <p class="font-semibold text-black">Sufyan</p>
+                                                <p class="font-semibold text-black">{{ $user->name }}</p>
                                             </td>
                                             <td class="px-4 py-3 border text-center align-middle">
                                                 <div class="flex items-center justify-center text-sm">
-                                                    <p>khawla@gmail.com</p>
+                                                    <p>{{ $user->email }}</p>
                                                 </div>
                                             </td>
                                             <td class="px-4 py-3 text-xs border flex justify-center items-center">
@@ -57,9 +58,9 @@
                                             </button>
 
                                             </td>
-                                            <td class="px-4 py-3 text-sm border">6/4/2000</td>
+                                            <td class="px-4 py-3 text-sm border">{{ $user->created_at->format('d/m/Y') }}</td>
                                         </tr>
-
+                                        @endforeach
 
                                     </tbody>
                                 </table>
