@@ -7,11 +7,13 @@ use App\Http\Controllers\feedController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Models\News;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EmailsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,7 +50,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile', function () {
         return view('pages.Profile');
     });
-
+    Route::delete('/profile', [UserController::class, 'destroy'])->name('profile.destroy');
+    Route::delete('/profile', [UserController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/profile/update', [UserController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile/update', [UserController::class, 'update'])->name('profile.update');
    Route::post('/feed/create', [feedController::class, "store"])->name('create_feed')->can('feed-create');
    Route::post('/feed/delete/{id}', [feedController::class, "destroy"])->name('delete_feed')->can('feed-delete');
 
@@ -62,8 +67,6 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/delete_user/{user_id}', [UserController::class, 'destroy'])->can('delete-user');
 
     Route::put('/update_role', [RoleController::class, 'update_role'])->can('role-edit');
-
-
 });
 
 
@@ -88,5 +91,8 @@ Route::delete('/category/{id}', [CategoryController::class, 'destroy'])->name('c
 Route::put('/categories/{id}', [CategoryController::class, 'update'])->name('categories.update');
 
 
-Route::get('/news/{news_id}', [NewsController::class, 'index']);
+Route::get('/news/{slug}', [NewsController::class, 'index'])->name('news.show');
+Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+Route::post('/user/updateRole', [UserController::class, 'updateRole'])->name('user.updateRole');
 
+Route::get('/emails', [EmailsController::class, 'index']);

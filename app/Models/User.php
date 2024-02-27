@@ -45,11 +45,13 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function comment() {
+    public function comment()
+    {
         return $this->hasMany(Comment::class);
     }
 
-    public function favorite() {
+    public function favorite()
+    {
         return $this->hasMany(Favorite::class);
     }
 
@@ -58,7 +60,8 @@ class User extends Authenticatable
         return $this->hasMany(Category::class, 'user_id');
     }
 
-    public function userInterest() {
-        return $this->hasMany(UserInterest::class);
+    function userinterest()
+    {
+        return $this->hasMany(UserInterest::class, 'user_id', 'id');
     }
 }
