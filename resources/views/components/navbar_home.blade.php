@@ -141,7 +141,7 @@
     </nav>
  </header>
    <!-- Mobile menu -->
-   <div class="side-area fixed w-full h-full inset-0 z-50">
+   <div class="side-area block md:hidden fixed w-full h-full inset-0 z-50">
     <!-- bg open -->
     <div class="back-menu fixed bg-gray-900 bg-opacity-70 w-full h-full inset-x-0 top-0">
       <div class="cursor-pointer text-white absolute right-64 p-2">
