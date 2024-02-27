@@ -39,4 +39,26 @@ class RoleController extends Controller
             return back()->with('error', 'Can not deleted the Admin role');
         }
     }
+
+    public function update_role(Request $request)
+    {
+        $request->validate([
+            'updated_role_name' => 'required|string|max:40|min:5',
+            'updated_permissions.*' => 'string'
+        ]);
+
+        $role = Role::findByName($request->updated_role_name);
+
+        if ($role) {
+            if ($role->name !== $request->updated_role_name) {
+                $role->update(['name' => $request->updated_role_name]);
+            }
+
+            $role->syncPermissions($request->updated_permissions);
+
+            return back()->with('success', 'Role updated successfully');
+        } else {
+            return back()->with('error', 'Role not found');
+        }
+    }
 }

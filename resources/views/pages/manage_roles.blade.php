@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-{{--    <x-headerdash />--}}
+    <x-headerdash />
     <x-sidebardash />
     <x-manage_roles />
 @endsection

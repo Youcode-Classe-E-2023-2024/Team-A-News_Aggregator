@@ -53,13 +53,14 @@
         <div class="max-w-7xl w-full mx-auto">
             <div class="grid md:grid-cols-2 items-center gap-10">
                 <div class="flex justify-between">
+                    @if(Auth::user()->can('favorite-liking'))
                     <div class="flex flex-col justify-center items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" class="like-btn h-10 w-10 border-1 text-gray-300 hover:text-gray-200 transition duration-100 cursor-pointer" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
                         </svg>
                         <p style="font-size: 12px;" id="likes-count"></p>
                     </div>
-
+                    @endif
                     <div class="justify-center flex items-center">
                         <p class="text-sm text-gray-400 mr-5">view sourse </p>
                         <a href="{{ $news['link'] }}" target="_blank" rel="noopener noreferrer" class="inline-block p-2 bg-blue-500 text-white rounded-full hover:bg-blue-600">

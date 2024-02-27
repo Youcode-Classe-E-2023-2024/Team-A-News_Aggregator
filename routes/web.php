@@ -39,7 +39,7 @@ Route::middleware(['guest'])->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     // auth routes here
-    Route::get('/dashboard', [DashboardController::class, "index"]);
+    Route::get('/dashboard', [DashboardController::class, "index"])->can('view-dashboard');
 
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::post('', [UserController::class, 'submit_interests'])->name('submit_user_interests');
@@ -49,14 +49,20 @@ Route::middleware(['auth'])->group(function () {
         return view('pages.Profile');
     });
 
-   Route::post('/feed/create', [feedController::class, "store"])->name('create_feed');
-   Route::post('/feed/delete/{id}', [feedController::class, "destroy"])->name('delete_feed');
+   Route::post('/feed/create', [feedController::class, "store"])->name('create_feed')->can('feed-create');
+   Route::post('/feed/delete/{id}', [feedController::class, "destroy"])->name('delete_feed')->can('feed-delete');
 
-    Route::get('/favorite', [FavoriteController::class, 'index']);
+    Route::get('/favorite', [FavoriteController::class, 'index'])->can('favorite-list');
 
-    Route::get('/manage-roles', [RoleController::class, 'index'])->name('manage_roles');
-    Route::post('/create_role', [RoleController::class, 'create_role'])->name('create_role');
-    Route::delete('/destroy_role', [RoleController::class, 'destroy_role'])->name('destroy_role');
+    Route::get('/manage-roles', [RoleController::class, 'index'])->name('manage_roles')->can('role-list');
+    Route::post('/create_role', [RoleController::class, 'create_role'])->name('create_role')->can('role-create');
+    Route::delete('/destroy_role', [RoleController::class, 'destroy_role'])->name('destroy_role')->can('role-delete');
+    Route::put('/update_user_role/{user_id}', [UserController::class, 'update_user_role'])->can('update-user-role');
+
+    Route::delete('/delete_user/{user_id}', [UserController::class, 'destroy'])->can('delete-user');
+
+    Route::put('/update_role', [RoleController::class, 'update_role'])->can('role-edit');
+
 
 });
 
@@ -65,7 +71,7 @@ Route::get('/about', function () {
     return view('pages.about');
 });
 
-Route::get('/category', [CategoryController::class, 'index']);
+Route::get('/category', [CategoryController::class, 'index'])->can('category-list');
 
 Route::resource('categories', CategoryController::class)->names([
     'index' => 'categories.index',
@@ -83,8 +89,4 @@ Route::put('/categories/{id}', [CategoryController::class, 'update'])->name('cat
 
 
 Route::get('/news/{news_id}', [NewsController::class, 'index']);
-
-Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
-Route::post('/user/updateRole', [UserController::class, 'updateRole'])->name('user.updateRole');
-
 

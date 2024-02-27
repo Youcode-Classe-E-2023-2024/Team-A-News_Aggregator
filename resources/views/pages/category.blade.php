@@ -20,11 +20,13 @@
             @endif
             <div class="grid grid-cols-1 md:grid-cols-1 xl:grid-cols-1 gap-4 text-black dark:text-white">
                 <div class="mt-4 mx-4">
+                    @if(Auth::user()->can('category-create'))
                     <button data-modal-target="crud-modal3" data-modal-toggle="crud-modal3"
                         class="middle none center rounded-lg bg-red-500 mb-10 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-red-500/20 transition-all hover:shadow-lg hover:shadow-red-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                         data-ripple-light="true">
                         Add Category
                     </button>
+                    @endif
                     <div class="w-full overflow-hidden rounded-lg shadow-xs">
                         <div class="w-full overflow-x-auto">
                             <table class="w-full">
@@ -45,21 +47,23 @@
                                                 <td class="px-4 py-3 text-sm">
                                                     {{ $category->created_at->format('d-m-Y') }}</td>
                                                 <td class="px-4 py-3 text-xs text-center">
+                                                    @if(Auth::user()->can('category-delete'))
                                                     <form action="{{ route('category.destroy', $category->id) }}"
                                                         method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit"
                                                             class=" bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded">
-                                                            Delete User
+                                                            Delete Category
                                                         </button>
                                                     </form>
-                                                    <button data-modal-target="crud-modal2"
-                                                        data-modal-toggle="crud-modal2"
-                                                        class=" bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-                                                        type="button">
-                                                        Update User
-                                                    </button>
+                                                    @endif
+{{--                                                    <button data-modal-target="crud-modal2"--}}
+{{--                                                        data-modal-toggle="crud-modal2"--}}
+{{--                                                        class=" bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"--}}
+{{--                                                        type="button">--}}
+{{--                                                        Update Category--}}
+{{--                                                    </button>--}}
 
                                                 </td>
                                             </tr>

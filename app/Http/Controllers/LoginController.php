@@ -39,8 +39,11 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-
-            return redirect('/dashboard');
+            if (Auth::user()->can('view-dashboard')) {
+                return redirect('/dashboard');
+            } else {
+                return redirect('/');
+            }
         }
 
         return back()->withErrors([
