@@ -34,7 +34,10 @@ class CommentController extends Controller
         $comment->user_id = Auth::id();
         $comment->save();
 
+        @dd($request);
+
         return back();
     }
 
 }
+

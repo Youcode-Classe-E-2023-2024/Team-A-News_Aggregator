@@ -127,17 +127,17 @@
 
 
 <script>
-    function updateComments() {
-        $.ajax({
-            url: '{{ route("comments.show", ["news_id" => $news->id]) }}',
-            type: 'GET',
-            success: function (response) {
-                $('#comments-container').html(response);
-            }
-        });
-    }
+    {{--function updateComments() {--}}
+    {{--    $.ajax({--}}
+    {{--        url: '{{ route("comments.show", ["news_id" => $news->id]) }}',--}}
+    {{--        type: 'GET',--}}
+    {{--        success: function (response) {--}}
+    {{--            $('#comments-container').html(response);--}}
+    {{--        }--}}
+    {{--    });--}}
+    {{--}--}}
 
-    setInterval(updateComments, 10000);
+//    setInterval(updateComments, 10000);
 </script>
 
 
