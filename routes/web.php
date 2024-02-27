@@ -83,8 +83,8 @@ Route::delete('/category/{id}', [CategoryController::class, 'destroy'])->name('c
 
 Route::put('/categories/{id}', [CategoryController::class, 'update'])->name('categories.update');
 
+Route::post('/addComment', [CommentController::class, "store"])->name('addComment');
 
-Route::post('home/detailed', [CommentController::class, "store"])->name('comments.store');
 Route::get('/news/{slug}', [NewsController::class, 'index'])->name('news.show');
 
 Route::get('/test', function () {
