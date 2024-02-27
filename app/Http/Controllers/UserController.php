@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -81,22 +82,18 @@ class UserController extends Controller
     }
     public function destroy($id)
     {
-        $user = User::findOrFail($id);
+        $user = User::find($request->user_id);
         $user->delete();
-
         return back()->with('success', 'User deleted successfully.');
     }
-    public function updateRole(Request $request)
+    public function update_user_role(Request $request)
     {
-        $request->validate([
-            'role' => 'required|string',
-            'userId' => 'required|int'
-        ]);
-
-        $user = User::findOrFail($request->userId);
-        $user->role = $request->role;
-        $user->save();
-
-        return back()->with('success', 'User role updated successfully.');
+        $user = User::find($request->user_id);
+        $role = Role::where('name', $request->updated_role)->first();
+        if ($user && $role) {
+            $user->syncRoles([$role->id]);
+            return back()->with('success', 'User role updated successfully.');
+        } else
+            return back()->with('error', 'Something went wrong try again !!!');
     }
-};
+}

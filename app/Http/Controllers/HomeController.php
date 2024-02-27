@@ -41,7 +41,6 @@ class HomeController extends Controller
                 ->with('category')
                 ->get()
                 ->toArray();
-
             Cache::put($cacheKey, $filteredNews, 600); // Cache for 600 minutes
         }
         return $filteredNews;

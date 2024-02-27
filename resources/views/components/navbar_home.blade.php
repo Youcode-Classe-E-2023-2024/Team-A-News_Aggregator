@@ -85,9 +85,11 @@
                <li class="relative border-l border-gray-800 hover:bg-gray-900">
                  <a class="block py-3 px-6 border-b-2 border-transparent" href="/dashboard">Dashboard</a>
                </li>
-               <li class="relative border-l border-gray-800 hover:bg-gray-900">
-                 <a class="block py-3 px-6 border-b-2 border-transparent" href="/favorite">Favorite</a>
-               </li>
+                 @if(Auth::user()->can('favorite-list'))
+                   <li class="relative border-l border-gray-800 hover:bg-gray-900">
+                     <a class="block py-3 px-6 border-b-2 border-transparent" href="/favorite">Favorite</a>
+                   </li>
+                 @endif
                <li class="relative border-l border-gray-800 hover:bg-gray-900">
                    @auth
                        <form action="{{ route('logout') }}" method="post">
