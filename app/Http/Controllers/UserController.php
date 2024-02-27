@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
-
 class UserController extends Controller
 {
     public function submit_interests(Request $request)
@@ -17,7 +16,7 @@ class UserController extends Controller
         $u = UserInterest::where('user_id', Auth::user()->id)->get();
 
         if (isset($request->interests)) {
-            if (count($request->interests) <= 4 || count($u) <= 4) {
+            if (count($u) <= 4) {
                 return back()->with('error', 'error, user already have enough interests');
             }
             Validator::make($request->all(), [
