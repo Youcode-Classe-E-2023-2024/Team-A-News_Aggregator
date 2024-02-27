@@ -10,10 +10,15 @@ use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
-    public function show()
+    public function show($news_id)
     {
-        $comments = Comment::all();
-        return view('pages.detailed',compact('comments'));
+        $comments = Comment::where('news_id', $news_id)->get();
+        $html = '';
+        foreach ($comments as $comment) {
+            $html .= '<div class="flex mb-4">';
+            $html .= '</div>';
+        }
+        return $html;
     }
 
     public function store(Request $request)
