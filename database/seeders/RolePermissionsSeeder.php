@@ -11,11 +11,15 @@ class RolePermissionsSeeder extends Seeder
 {
     private $roles = [
         'Admin',
-        'Member',
-        'Guest',
+        'Member'
     ];
 
     private $permissions = [
+        'favorite-list',
+        'favorite-liking',
+        'comment-create',
+        'comment-edit',
+        'comment-delete',
         'role-list',
         'role-create',
         'role-edit',
@@ -23,7 +27,15 @@ class RolePermissionsSeeder extends Seeder
         'news-list',
         'news-create',
         'news-edit',
-        'news-delete'
+        'news-delete',
+        'category-list',
+        'category-create',
+        'category-delete',
+        'update-user-role',
+        'delete-user',
+        'view-dashboard',
+        'feed-create',
+        'feed-delete'
     ];
 
     public function run(): void
@@ -37,15 +49,6 @@ class RolePermissionsSeeder extends Seeder
         }
 
         Role::findByName('Admin')->givePermissionTo($this->permissions);
-        Role::findByName('Editor')->givePermissionTo([
-
-            //
-
-        ]);
-        Role::findByName('Guest')->givePermissionTo([
-
-            //
-
-        ]);
+        Role::findByName('Member')->givePermissionTo(['favorite-list', 'favorite-like', 'comment-create', 'comment-edit', 'comment-delete']);
     }
 }

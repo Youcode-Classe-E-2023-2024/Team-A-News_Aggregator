@@ -8,8 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use App\Models\User;
-
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -18,7 +17,7 @@ class UserController extends Controller
         $u = UserInterest::where('user_id', Auth::user()->id)->get();
 
         if (isset($request->interests)) {
-            if (count($request->interests) <= 4 || count($u) <= 4) {
+            if (count($u) <= 4) {
                 return back()->with('error', 'error, user already have enough interests');
             }
             Validator::make($request->all(), [
@@ -80,24 +79,21 @@ class UserController extends Controller
         $user->save();
 
         return redirect()->back()->with('success', 'Profile updated successfully');
+    }
     public function destroy($id)
     {
-        $user = User::findOrFail($id);
+        $user = User::find($request->user_id);
         $user->delete();
-
         return back()->with('success', 'User deleted successfully.');
     }
-    public function updateRole(Request $request)
+    public function update_user_role(Request $request)
     {
-        $request->validate([
-            'role' => 'required|string',
-            'userId' => 'required|int'
-        ]);
-    
-        $user = User::findOrFail($request->userId);
-        $user->role = $request->role;
-        $user->save();
-    
-        return back()->with('success', 'User role updated successfully.');
+        $user = User::find($request->user_id);
+        $role = Role::where('name', $request->updated_role)->first();
+        if ($user && $role) {
+            $user->syncRoles([$role->id]);
+            return back()->with('success', 'User role updated successfully.');
+        } else
+            return back()->with('error', 'Something went wrong try again !!!');
     }
-};
+}

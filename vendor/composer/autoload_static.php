@@ -41,6 +41,7 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
         '320163ac6b93aebe3dc25b60a0533d56' => __DIR__ . '/..' . '/spatie/laravel-ignition/src/helpers.php',
         '377b22b161c09ed6e5152de788ca020a' => __DIR__ . '/..' . '/spatie/laravel-permission/src/helpers.php',
+        '357cf87d1a9d1f7507250b48c88afeae' => __DIR__ . '/../..' . '/app/Helpers/IneterestForm.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -648,6 +649,7 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/DashboardController.php',
         'App\\Http\\Controllers\\FavoriteController' => __DIR__ . '/../..' . '/app/Http/Controllers/FavoriteController.php',
+        'App\\Http\\Controllers\\Hash' => __DIR__ . '/../..' . '/app/Http/Controllers/Hash.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/LoginController.php',
         'App\\Http\\Controllers\\NewsController' => __DIR__ . '/../..' . '/app/Http/Controllers/NewsController.php',
@@ -678,6 +680,7 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\View\\Components\\detailed' => __DIR__ . '/../..' . '/app/View/Components/detailed.php',
+        'App\\View\\Components\\favorite' => __DIR__ . '/../..' . '/app/View/Components/favorite.php',
         'App\\View\\Components\\footer_home' => __DIR__ . '/../..' . '/app/View/Components/footer_home.php',
         'App\\View\\Components\\headerdash' => __DIR__ . '/../..' . '/app/View/Components/headerdash.php',
         'App\\View\\Components\\home' => __DIR__ . '/../..' . '/app/View/Components/home.php',

@@ -50,7 +50,6 @@ class feedController extends Controller
                 'feed_id' => $feed_id,
                 "slug" => Str::slug($i['title'], '-')
             ]);
-
             $result['items'][] = $i;
         }
     }
