@@ -5,6 +5,22 @@
     </button>
     @endif
 </div>
+@if (session('success'))
+    <div class="max-w-4xl mx-auto px-4 absolute z-50 left-[15rem] top-[2.8rem]">
+        <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4" role="alert">
+            <p class="font-bold">Success</p>
+            <p>{{ session('success') }}</p>
+        </div>
+    </div>
+@endif
+@if (session('error'))
+    <div class="max-w-4xl mx-auto px-4 absolute z-50 left-[15rem] top-[2.8rem]">
+        <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4" role="alert">
+            <p class="font-bold">Error</p>
+            <p>{{ session('error') }}</p>
+        </div>
+    </div>
+@endif
 <div id="crud-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative p-4 w-full max-w-md max-h-full">
         <!-- Modal content -->
@@ -25,9 +41,9 @@
             <form action="{{ route('create_role') }}" method="post" class="p-4 md:p-5">
                 @csrf
                 <div class="grid gap-2 mb-4 grid-cols-1">
-                    @if(session('success'))
-                        <p class="text-green-500 text-sm">{{ session('success') }}</p>
-                    @endif
+{{--                    @if(session('success'))--}}
+{{--                        <p class="text-green-500 text-sm">{{ session('success') }}</p>--}}
+{{--                    @endif--}}
                     <div class="col-span-2">
                         <label for="name" class=" block mb-2 text-xl font-medium text-gray-900 dark:text-white">Role Name</label>
                         <input type="text" name="role_name" id="role_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type product name" required="">
@@ -61,16 +77,10 @@
 
 
 <!-- Roles Table -->
-<div class="flex flex-col items-end">
+<div class="flex flex-col items-end h-screen">
     <div class="w-3/4 overflow-x-auto mb-4">
         <table class="min-w-full border-collapse border border-gray-300">
             <thead>
-            @if(session('success'))
-                <p class="text-sm text-green-700">{{ session('success') }}</p>
-            @endif
-            @if(session('error'))
-                <p class="text-red-500 text-sm">{{ session('error') }}</p>
-            @enderror
             <tr>
                 <th class="px-4 py-2 bg-gray-200 text-left">ID</th>
                 <th class="px-4 py-2 bg-gray-200 text-left">Role Name</th>
@@ -145,7 +155,7 @@
                 <div>
                     @foreach(\Spatie\Permission\Models\Permission::all() as $permission)
                         <div class="w-full border-b">
-                            <p class="">{{ $permission->name }}</p>
+                            <p class="text-white">{{ $permission->name }}</p>
                             <input class="mb-1" name="updated_permissions[]" type="checkbox" value="{{ $permission->name }}">
                         </div>
                     @endforeach
