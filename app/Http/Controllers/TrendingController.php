@@ -15,13 +15,20 @@ class TrendingController extends Controller
 
     public function trends()
     {
-        $news = News::withCount(['favorites', 'comments'])->get()
-                    ->join('categories', 'favorites.category_id', '=', 'categories.category')
-                    ->get();
-        
-        $trending_news = $news->sortByDesc(function ($item) {
-            return $item->favorites_count + $item->comments_count;
-        })->take(4);
-        dd($trending_news);
+        $trending_news = News::withCount(['favorites', 'comments'])
+            ->get()
+            ->sortByDesc(function ($item) {
+                return $item->favorites_count + $item->comments_count;
+            })
+            ->take(7);
+
+        // for better ordering
+        $t = [];
+        foreach ($trending_news as $trend) {
+            $t [] = $trend;
+        }
+
+//        dd($t);
+        return $t;
     }
 }
