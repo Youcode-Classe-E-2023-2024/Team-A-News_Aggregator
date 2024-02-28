@@ -14,7 +14,6 @@ class NewsController extends Controller
         $news =  News::where('slug', $news_slug)->get()->first();
         $likes = Favorite::where('news_id', $news->id)->get();
         $comments = Comment::where('news_id', $news->id)->get();
-
         return view('pages.detailed', ['news' => $news, 'likes' => count($likes), "comments" => $comments]);
     }
 }

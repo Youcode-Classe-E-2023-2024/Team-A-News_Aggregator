@@ -12,30 +12,28 @@ class CommentController extends Controller
 {
     public function show($news_id)
     {
-        $comments = Comment::where('news_id', $news_id)->get();
-        $html = '';
-        foreach ($comments as $comment) {
-            $html .= '<div class="flex mb-4">';
-            $html .= '</div>';
-        }
-        return $html;
+        $comments = Comment::where('news_id', $news_id)
+            ->orderBy('id', 'DESC')
+            ->with('user')->get();
+        return json_encode($comments);
     }
 
     public function store(Request $request)
     {
-//        dd($request);
 //        \Log::info($request->all());
+
 
         $request->validate([
             'comment' => 'required',
-            'news_id' => 'required|exists:news,id',
+            'newsId' => 'required|exists:news,id',
         ]);
 
         $comment = new Comment();
-        $comment->news_id = $request->input('news_id');
+        $comment->news_id = $request->input('newsId');
         $comment->comment = $request->input('comment');
         $comment->user_id = Auth::id();
         $comment->save();
+        die();
 //        return back();
     }
 
