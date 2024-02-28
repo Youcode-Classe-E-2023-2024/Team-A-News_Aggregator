@@ -114,9 +114,14 @@
                                 <a class="block py-3 px-6 border-b-2 border-transparent" href="#">Techno</a>
                             @endauth
                         </li>
-                        <li class="relative border-l border-gray-800 hover:bg-gray-900">
-                            <a class="block py-3 px-6 border-b-2 border-transparent" href="/dashboard">Dashboard</a>
-                        </li>
+                        @auth
+                            @if(Auth::user()->can('view-dashboard'))
+                                <li class="relative border-l border-gray-800 hover:bg-gray-900">
+                                    <a class="block py-3 px-6 border-b-2 border-transparent"
+                                       href="/dashboard">Dashboard</a>
+                                </li>
+                            @endif
+                        @endauth
                         @auth
 
                             @if(Auth::user()->can('favorite-list'))
@@ -137,6 +142,11 @@
                                 <a class="block py-3 px-6 border-b-2 border-transparent" href="/login">Login</a>
                             @endauth
                         </li>
+                        @if(!Auth::check())
+                        <li class="relative border-l border-gray-800 hover:bg-gray-900">
+                            <a class="block py-3 px-6 border-b-2 border-transparent" href="/register">Register</a>
+                        </li>
+                        @endif
                     </ul>
 
                     <!-- search form & mobile nav -->
