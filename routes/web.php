@@ -11,6 +11,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\TrendingController;
 use App\Http\Controllers\UserController;
 use App\Models\News;
 use Illuminate\Support\Facades\Route;
@@ -103,6 +104,4 @@ Route::get('/news', [Newsdash::class, 'index'])->can('news-list');
 Route::delete('/news/{id}', [Newsdash::class, 'destroy'])->name('news.destroy')->can('news-delete');
 Route::get('/emails', [EmailsController::class, 'index']);
 
-Route::get('/t', function () {
-    return view('pages.tranding');
-});
+Route::get('/trending', [TrendingController::class, 'index']);
