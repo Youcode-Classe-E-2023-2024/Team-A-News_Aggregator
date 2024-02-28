@@ -39,16 +39,18 @@ class RegisterController extends Controller
             'profile_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
+        $role = User::count() > 0 ? 'Member' : 'Admin';
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
-
+        $user->assignRole($role);
 
         $folderName = 'user_profiles/' . $user->id;
         Storage::disk('public')->makeDirectory($folderName);
-        
+
         $profileImagePath = $request->file('profile_image')->store($folderName, 'public');
         $user->profile_image = $profileImagePath;
         $user->save();

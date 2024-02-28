@@ -14,19 +14,11 @@ class HomeController extends Controller
 {
     function index()
     {
-        $items = News::query()
-            ->select('news.*', 'categories.category')
-            ->leftJoin('categories', 'news.category_id', '=', 'categories.id')
-            ->orderBy('news.created_at', 'desc')
-            ->get()
-            ->toArray();
-
-        if (!empty($items)) {
-            $mainHero = $items[0];
-            $fourHeroes = array_slice($items, 1, 4);
-            return view('pages.home', compact('fourHeroes', 'mainHero'));
-        }
-        return view('pages.home');
+        $items = $this->getCachedData();
+        $categories = Category::all();
+        $mainHero = $items[0];
+        $fourHeroes = array_slice($items, 1, 4);
+        return view('pages.home', compact('fourHeroes', 'mainHero', 'categories'));
     }
 
     function getCachedData()
@@ -49,7 +41,6 @@ class HomeController extends Controller
                 ->with('category')
                 ->get()
                 ->toArray();
-
             Cache::put($cacheKey, $filteredNews, 600); // Cache for 600 minutes
         }
         return $filteredNews;
