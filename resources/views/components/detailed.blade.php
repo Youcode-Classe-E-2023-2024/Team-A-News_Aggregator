@@ -18,7 +18,7 @@
                          class="w-1/2 h-1/2 mx-auto"/>
                 </div>
                 <div class="flex justify-center">
-                    @if(Auth::user()->can('favorite-liking'))
+                    @if(Auth::check() && Auth::user()->can('favorite-liking'))
                         <div class="flex flex-col justify-center items-center">
                             <svg xmlns="http://www.w3.org/2000/svg"
                                  class="like-btn h-10 w-10 border-1 text-gray-300 hover:text-gray-200 transition duration-100 cursor-pointer"
@@ -68,24 +68,26 @@
                             </div>
                             <form class="w-full max-w-xl bg-white rounded-lg px-4 pt-2">
                                 <div class="flex flex-wrap -mx-3 mb-6">
-                                    <div class="w-full md:w-full px-3 mb-2 mt-2">
-                                        <input name="csrfToken" value="{{csrf_token()}}" type="hidden">
-                                        <input
-                                            id="commentInput"
-                                            class="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white"
-                                            name="comment" placeholder='Type Your Comment'
-                                            required>
-                                    </div>
-                                    <div class="w-full md:w-full flex items-start md:w-full px-3">
-                                        <div class="-mr-1">
-                                            <button type="button"
-                                                    id="addCommentBtn"
-                                                    class="bg-blue-700 text-white font-medium py-1 px-4 border border-gray-400 rounded-lg tracking-wide mr-1 hover:bg-blue-500"
-                                            >
-                                                Public
-                                            </button>
+                                    @auth()
+                                        <div class="w-full md:w-full px-3 mb-2 mt-2">
+                                            <input name="csrfToken" value="{{csrf_token()}}" type="hidden">
+                                            <input
+                                                id="commentInput"
+                                                class="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white"
+                                                name="comment" placeholder='Type Your Comment'
+                                                required>
                                         </div>
-                                    </div>
+                                        <div class="w-full md:w-full flex items-start md:w-full px-3">
+                                            <div class="-mr-1">
+                                                <button type="button"
+                                                        id="addCommentBtn"
+                                                        class="bg-blue-700 text-white font-medium py-1 px-4 border border-gray-400 rounded-lg tracking-wide mr-1 hover:bg-blue-500"
+                                                >
+                                                    Public
+                                                </button>
+                                            </div>
+                                        </div>
+                                    @endauth
                                 </div>
                             </form>
                         </div>
