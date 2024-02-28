@@ -1,5 +1,3 @@
-
-
 <header class="fixed top-0 left-0 right-0 z-50">
     <nav class="bg-black">
         <div class="xl:container mx-auto px-3 sm:px-4 xl:px-2">
