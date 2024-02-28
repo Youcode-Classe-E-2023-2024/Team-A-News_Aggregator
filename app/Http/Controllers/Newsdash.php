@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\News; 
+use App\Models\News;
 use Illuminate\Http\Request;
 
 class Newsdash extends Controller
@@ -15,6 +15,6 @@ class Newsdash extends Controller
 {
     $newsItem = News::findOrFail($id);
     $newsItem->delete();
-    return redirect()->route('news.index')->with('success', 'News item deleted successfully.');
+    return back()->with('success', 'News item deleted successfully.');
 }
 }

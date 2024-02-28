@@ -95,6 +95,6 @@ Route::put('/categories/{id}', [CategoryController::class, 'update'])->name('cat
 Route::get('/news/{slug}', [NewsController::class, 'index'])->name('news.show');
 Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
 Route::post('/user/updateRole', [UserController::class, 'updateRole'])->name('user.updateRole');
-Route::get('/news', [Newsdash::class, 'index']);
-Route::delete('/news/{id}', [Newsdash::class, 'destroy'])->name('news.destroy');
+Route::get('/news', [Newsdash::class, 'index'])->can('news-list');
+Route::delete('/news/{id}', [Newsdash::class, 'destroy'])->name('news.destroy')->can('news-delete');
 Route::get('/emails', [EmailsController::class, 'index']);
