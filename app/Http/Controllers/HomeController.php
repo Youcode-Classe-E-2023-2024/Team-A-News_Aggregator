@@ -15,6 +15,9 @@ class HomeController extends Controller
     function index()
     {
         $items = $this->getCachedData();
+        if(empty($items)) {
+            return view('pages.database_empty');
+        }
         $categories = Category::all();
         $mainHero = $items[0];
         $fourHeroes = array_slice($items, 1, 4);
