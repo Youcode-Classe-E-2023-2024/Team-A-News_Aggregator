@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Category;
 use Illuminate\Support\ServiceProvider;
 use App\Providers\CustomPostgresConnector;
 
@@ -21,6 +22,5 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-
     }
 }
