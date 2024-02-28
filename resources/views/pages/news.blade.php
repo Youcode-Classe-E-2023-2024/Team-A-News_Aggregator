@@ -37,18 +37,19 @@
                                         <td class="px-4 py-3 text-sm">{{ $newsItem->id }}</td>
                                         <td class="px-4 py-3 text-sm">{{ $newsItem->title }}</td>
                                         <td class="px-4 py-3 text-xs text-center">
+                                            @if(Auth::user()->can('news-delete'))
                                             <form action="{{ route('news.destroy', $newsItem->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                            <button type="submit" class="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded">
-                                                Delete News
-                                            </button>
-                                        </form>
-
+                                                <button type="submit" class="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded">
+                                                    Delete News
+                                                </button>
+                                            </form>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach
-                                  
+
                                 </tbody>
                             </table>
                         </div>

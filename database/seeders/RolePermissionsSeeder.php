@@ -15,27 +15,25 @@ class RolePermissionsSeeder extends Seeder
     ];
 
     private $permissions = [
+        'view-dashboard',
+        'role-list',
+        'role-create',
+        'role-edit',
+        'role-delete',
+        'feed-create',
+        'feed-delete',
+        'update-user-role',
+        'delete-user',
+        'category-list',
+        'category-create',
+        'category-delete',
+        'news-list',
+        'news-delete',
         'favorite-list',
         'favorite-liking',
         'comment-create',
         'comment-edit',
         'comment-delete',
-        'role-list',
-        'role-create',
-        'role-edit',
-        'role-delete',
-        'news-list',
-        'news-create',
-        'news-edit',
-        'news-delete',
-        'category-list',
-        'category-create',
-        'category-delete',
-        'update-user-role',
-        'delete-user',
-        'view-dashboard',
-        'feed-create',
-        'feed-delete'
     ];
 
     public function run(): void
