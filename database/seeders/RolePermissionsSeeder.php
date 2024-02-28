@@ -47,6 +47,6 @@ class RolePermissionsSeeder extends Seeder
         }
 
         Role::findByName('Admin')->givePermissionTo($this->permissions);
-        Role::findByName('Member')->givePermissionTo(['favorite-list', 'favorite-like', 'comment-create', 'comment-edit', 'comment-delete']);
+        Role::findByName('Member')->givePermissionTo(['favorite-list', 'favorite-liking', 'comment-create', 'comment-edit', 'comment-delete']);
     }
 }

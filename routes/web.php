@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FavoriteController;
@@ -90,6 +91,9 @@ Route::resource('categories', CategoryController::class)->names([
 Route::delete('/category/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
 
 Route::put('/categories/{id}', [CategoryController::class, 'update'])->name('categories.update');
+
+Route::post('/comments/addComment', [CommentController::class, 'store'])->name('addComment');
+Route::get('/comments/{news_id}', [CommentController::class, 'show'])->name('comments.show');
 
 
 Route::get('/news/{slug}', [NewsController::class, 'index'])->name('news.show');

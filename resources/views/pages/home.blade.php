@@ -7,7 +7,6 @@
     <!-- =========={ MAIN }==========  -->
     <x-partiehome :fourHeroes="$fourHeroes" :mainHero="$mainHero"/>
 
-
     @auth()
         @if(!hasInterests())
             <x-interest_form :categories="$categories"/>
