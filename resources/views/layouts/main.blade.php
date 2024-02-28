@@ -5,7 +5,7 @@
     </head>
     <body class="text-gray-700 pt-9 sm:pt-10">
         @include('includes.header')
-        <main id="content">
+        <main id="content" class="h-screen">
             @yield('content')
         </main>
         <footer class="bg-black text-gray-400">
