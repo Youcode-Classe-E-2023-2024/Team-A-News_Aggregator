@@ -105,3 +105,6 @@ Route::delete('/news/{id}', [Newsdash::class, 'destroy'])->name('news.destroy')-
 Route::get('/emails', [EmailsController::class, 'index']);
 
 Route::get('/trending', [TrendingController::class, 'index']);
+
+Route::post('/email/breakingNews', [EmailsController::class, "breakingNewsForOne"])->name('breakingNews');
+
