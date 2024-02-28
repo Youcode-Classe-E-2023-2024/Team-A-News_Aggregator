@@ -381,146 +381,52 @@
             <div class="flex-shrink max-w-full w-full overflow-hidden">
                 <div class="w-full py-3">
                     <h2 class="text-gray-800 text-2xl font-bold">
-                        <span class="inline-block h-5 border-l-3 border-red-600 mr-2"></span>Africa
+                        <span class="inline-block h-5 border-l-3 border-red-600 mr-2"></span>Filter by Categories
                     </h2>
                 </div>
-                <div class="flex flex-row flex-wrap -mx-3">
-                    <div
-                        class="flex-shrink max-w-full w-full sm:w-1/3 lg:w-1/4 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
-                        <div class="flex flex-row sm:block hover-img">
-                            <a href="">
-                                <img class="max-w-full w-full mx-auto" src="src/img/dummy/img19.jpg" alt="alt title">
-                            </a>
-                            <div class="py-0 sm:py-3 pl-3 sm:pl-0">
-                                <h3 class="text-lg font-bold leading-tight mb-2">
-                                    <a href="#">5 Tips to Save Money Booking Your Next Hotel Room</a>
-                                </h3>
-                                <p class="hidden md:block text-gray-600 leading-tight mb-1">This is a wider card with
-                                    supporting text below as a natural lead-in to additional content.</p>
-                                <a class="text-gray-500" href="#"><span
-                                        class="inline-block h-3 border-l-2 border-red-600 mr-2"></span>Europe</a>
-                            </div>
-                        </div>
+
+
+
+                <div class="carousel relative w-full overflow-hidden">
+                    <button class="bg-black px-4 py-2 rounded-lg text-white hover:opacity-70 m-2 left-0 prev">Prev</button>
+                    <button class="bg-black px-4 py-2 rounded-lg text-white m-2 hover:opacity-70 right-0 next">Next</button>
+
+
+                    <div class="max-w-sm mx-auto flex items-center">
+                        <label for="cat_to_filter" class="sr-only">Underline select</label>
+                        <select id="cat_to_filter" class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer mr-2">
+                            @foreach(\App\Models\Category::all() as $cat)
+                                <option value="{{ $cat->id }}">{{ $cat->category }}</option>
+                            @endforeach
+                        </select>
+                        <button onclick="filterByCategory(document.querySelector('#cat_to_filter'))" class="bg-black hover:opacity-70 text-white font-semibold py-2 px-4 rounded">Filter</button>
                     </div>
-                    <div
-                        class="flex-shrink max-w-full w-full sm:w-1/3 lg:w-1/4 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
-                        <div class="flex flex-row sm:block hover-img">
-                            <a href="">
-                                <img class="max-w-full w-full mx-auto" src="src/img/dummy/img20.jpg" alt="alt title">
-                            </a>
-                            <div class="py-0 sm:py-3 pl-3 sm:pl-0">
-                                <h3 class="text-lg font-bold leading-tight mb-2">
-                                    <a href="#">5 Tips to Save Money Booking Your Next Hotel Room</a>
-                                </h3>
-                                <p class="hidden md:block text-gray-600 leading-tight mb-1">This is a wider card with
-                                    supporting text below as a natural lead-in to additional content.</p>
-                                <a class="text-gray-500" href="#"><span
-                                        class="inline-block h-3 border-l-2 border-red-600 mr-2"></span>Europe</a>
+
+
+
+                    <div style="transition: transform 0.5s ease;" class="flex container_d">
+                        @foreach($fourHeroes as $c)
+                            <div style="flex: 0 0 100%; max-width: 25%; padding: 20px;" class="card">
+                                <div class="flex flex-row sm:block hover-img">
+                                    <a href="">
+                                        <img class="max-w-full w-full mx-auto" src="src/img/dummy/img20.jpg" alt="alt title">
+                                    </a>
+                                    <div class="py-0 sm:py-3 pl-3 sm:pl-0">
+                                        <h3 class="text-lg font-bold leading-tight mb-2">
+                                            <a href="#">{{ $c['title'] }}</a>
+                                        </h3>
+                                        <p class="hidden md:block text-gray-600 leading-tight mb-1">
+                                            {{ $c['description'] }}
+                                        </p>
+                                        <a class="text-gray-500" href="#"><span class="inline-block h-3 border-l-2 border-red-600 mr-2"></span>{{ $c['category']['category'] }}</a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        @endforeach
                     </div>
-                    <div
-                        class="flex-shrink max-w-full w-full sm:w-1/3 lg:w-1/4 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
-                        <div class="flex flex-row sm:block hover-img">
-                            <a href="">
-                                <img class="max-w-full w-full mx-auto" src="src/img/dummy/img21.jpg" alt="alt title">
-                            </a>
-                            <div class="py-0 sm:py-3 pl-3 sm:pl-0">
-                                <h3 class="text-lg font-bold leading-tight mb-2">
-                                    <a href="#">5 Tips to Save Money Booking Your Next Hotel Room</a>
-                                </h3>
-                                <p class="hidden md:block text-gray-600 leading-tight mb-1">This is a wider card with
-                                    supporting text below as a natural lead-in to additional content.</p>
-                                <a class="text-gray-500" href="#"><span
-                                        class="inline-block h-3 border-l-2 border-red-600 mr-2"></span>Europe</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div
-                        class="flex-shrink max-w-full w-full sm:w-1/3 lg:w-1/4 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
-                        <div class="flex flex-row sm:block hover-img">
-                            <a href="">
-                                <img class="max-w-full w-full mx-auto" src="src/img/dummy/img22.jpg" alt="alt title">
-                            </a>
-                            <div class="py-0 sm:py-3 pl-3 sm:pl-0">
-                                <h3 class="text-lg font-bold leading-tight mb-2">
-                                    <a href="#">5 Tips to Save Money Booking Your Next Hotel Room</a>
-                                </h3>
-                                <p class="hidden md:block text-gray-600 leading-tight mb-1">This is a wider card with
-                                    supporting text below as a natural lead-in to additional content.</p>
-                                <a class="text-gray-500" href="#"><span
-                                        class="inline-block h-3 border-l-2 border-red-600 mr-2"></span>Europe</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div
-                        class="flex-shrink max-w-full w-full sm:w-1/3 lg:w-1/4 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
-                        <div class="flex flex-row sm:block hover-img">
-                            <a href="">
-                                <img class="max-w-full w-full mx-auto" src="src/img/dummy/img23.jpg" alt="alt title">
-                            </a>
-                            <div class="py-0 sm:py-3 pl-3 sm:pl-0">
-                                <h3 class="text-lg font-bold leading-tight mb-2">
-                                    <a href="#">5 Tips to Save Money Booking Your Next Hotel Room</a>
-                                </h3>
-                                <p class="hidden md:block text-gray-600 leading-tight mb-1">This is a wider card with
-                                    supporting text below as a natural lead-in to additional content.</p>
-                                <a class="text-gray-500" href="#"><span
-                                        class="inline-block h-3 border-l-2 border-red-600 mr-2"></span>Europe</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div
-                        class="flex-shrink max-w-full w-full sm:w-1/3 lg:w-1/4 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
-                        <div class="flex flex-row sm:block hover-img">
-                            <a href="">
-                                <img class="max-w-full w-full mx-auto" src="src/img/dummy/img24.jpg" alt="alt title">
-                            </a>
-                            <div class="py-0 sm:py-3 pl-3 sm:pl-0">
-                                <h3 class="text-lg font-bold leading-tight mb-2">
-                                    <a href="#">5 Tips to Save Money Booking Your Next Hotel Room</a>
-                                </h3>
-                                <p class="hidden md:block text-gray-600 leading-tight mb-1">This is a wider card with
-                                    supporting text below as a natural lead-in to additional content.</p>
-                                <a class="text-gray-500" href="#"><span
-                                        class="inline-block h-3 border-l-2 border-red-600 mr-2"></span>Europe</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div
-                        class="flex-shrink max-w-full w-full sm:w-1/3 lg:w-1/4 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
-                        <div class="flex flex-row sm:block hover-img">
-                            <a href="">
-                                <img class="max-w-full w-full mx-auto" src="src/img/dummy/img25.jpg" alt="alt title">
-                            </a>
-                            <div class="py-0 sm:py-3 pl-3 sm:pl-0">
-                                <h3 class="text-lg font-bold leading-tight mb-2">
-                                    <a href="#">5 Tips to Save Money Booking Your Next Hotel Room</a>
-                                </h3>
-                                <p class="hidden md:block text-gray-600 leading-tight mb-1">This is a wider card with
-                                    supporting text below as a natural lead-in to additional content.</p>
-                                <a class="text-gray-500" href="#"><span
-                                        class="inline-block h-3 border-l-2 border-red-600 mr-2"></span>Europe</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div
-                        class="flex-shrink max-w-full w-full sm:w-1/3 lg:w-1/4 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
-                        <div class="flex flex-row sm:block hover-img">
-                            <a href="">
-                                <img class="max-w-full w-full mx-auto" src="src/img/dummy/img26.jpg" alt="alt title">
-                            </a>
-                            <div class="py-0 sm:py-3 pl-3 sm:pl-0">
-                                <h3 class="text-lg font-bold leading-tight mb-2">
-                                    <a href="#">5 Tips to Save Money Booking Your Next Hotel Room</a>
-                                </h3>
-                                <p class="hidden md:block text-gray-600 leading-tight mb-1">This is a wider card with
-                                    supporting text below as a natural lead-in to additional content.</p>
-                                <a class="text-gray-500" href="#"><span
-                                        class="inline-block h-3 border-l-2 border-red-600 mr-2"></span>Europe</a>
-                            </div>
-                        </div>
-                    </div>
+                </div>
+
+
                 </div>
             </div>
         </div>
@@ -902,3 +808,4 @@
         </div>
     </div>
 </div>
+<script src="{{ asset('js/category_filter.js') }}"></script>
