@@ -102,3 +102,7 @@ Route::post('/user/updateRole', [UserController::class, 'updateRole'])->name('us
 Route::get('/news', [Newsdash::class, 'index'])->can('news-list');
 Route::delete('/news/{id}', [Newsdash::class, 'destroy'])->name('news.destroy')->can('news-delete');
 Route::get('/emails', [EmailsController::class, 'index']);
+
+Route::get('/t', function () {
+    return view('pages.tranding');
+});
