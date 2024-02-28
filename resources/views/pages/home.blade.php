@@ -5,7 +5,7 @@
     <x-partiehome :fourHeroes="$fourHeroes" :mainHero="$mainHero"/>
 
     @auth()
-        @if(!hasInterests())
+        @if(hasInterests())
             <x-interest_form :categories="$categories"/>
         @endif
     @endauth
