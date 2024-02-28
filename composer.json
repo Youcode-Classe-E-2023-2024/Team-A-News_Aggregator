@@ -16,6 +16,7 @@
         "laravel/passport": "*",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
+        "livewire/livewire": "^3.4",
         "spatie/laravel-permission": "^6.3",
         "vedmant/laravel-feed-reader": "^1.6",
         "willvincent/feeds": "^2.3"

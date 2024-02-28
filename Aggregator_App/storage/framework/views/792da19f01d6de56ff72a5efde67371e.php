@@ -41,6 +41,27 @@
                                     <div class="flex items-center flex-1 font-bold leading-tight">Anonymous
                                         <span class="ml-2 text-xs font-normal text-gray-500">3 days ago</span>
                                     </div>
+{{--                                    @foreach($post->comments as $comment)--}}
+
+{{--                                    <div class="flex-1 mt-1 text-sm font-medium leading-loose text-gray-600">--}}
+{{--                                        {{ $comment->content }}--}}
+{{--                                    </div>--}}
+
+{{--                                    @endforeach--}}
+
+                                    <form class="mt-4"
+                                          action="{{ route('comments.store') }}"
+                                          method="POST"
+                                    >
+                                        @csrf
+                                        <label for="comment" class="block text-sm font-medium text-gray-700">Add a
+                                            comment:</label>
+                                        <div
+                                            class="bg-white flex px-1 py-1 rounded-full border border-blue-500 overflow-hidden my-3 font-[sans-serif]">
+                                            <textarea type='email' name="content" placeholder='Add your comment here...'
+                                                      class="outline-none bg-white pl-4 text-sm w-full"></textarea>
+{{--                                            <input type="hidden" name="post_id" value="{{ $post->id }}">--}}
+                                        </div>
                                     <?php $__currentLoopData = $news; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $new): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <div class="flex-1 mt-1 text-sm font-medium leading-loose text-gray-600">
                                             <?php echo e($new->content); ?>
