@@ -1,10 +1,8 @@
-
-
 <header class="fixed top-0 left-0 right-0 z-50">
     <nav class="bg-black">
         <div class="xl:container mx-auto px-3 sm:px-4 xl:px-2">
             <div class="flex justify-between">
-                <div class="mx-w-10 text-2xl font-bold capitalize text-white flex items-center">News</div>
+                <div class="mx-w-10 text-2xl font-bold capitalize text-white flex items-center"><a href="/">News</a></div>
 
                 <div class="flex flex-row">
                     <!-- nav menu -->
@@ -13,73 +11,19 @@
                             <a class="block py-3 px-6 border-b-2 border-transparent" href="/">Home</a>
                         </li>
                         <li class="dropdown relative border-l border-gray-800 hover:bg-gray-900">
-                            <a class="block py-3 px-6 border-b-2 border-transparent" href="#">Pages</a>
+                            <a class="block py-3 px-6 border-b-2 border-transparent" href="#">Category</a>
 
                             <ul class="dropdown-menu font-normal absolute left-0 right-auto top-full z-50 border-b-0 text-left bg-white text-gray-700 border border-gray-100" style="min-width: 12rem;">
-                                <li class="subdropdown relative hover:bg-gray-50">
-                                    <a class="block py-2 px-6 border-b border-gray-100" href="#">
-                                        Homepage
-                                    </a>
-
-                                    <!--dropdown submenu-->
-                                    <ul class="dropdown-menu absolute left-full right-auto transform top-full z-50 border-b-0 text-left -mt-10 ml-0 mr-0 bg-white border border-gray-100" style="min-width: 12rem;">
-                                        <li class="relative hover:bg-gray-50"><a class="block py-2 px-6 border-b border-gray-100" href="#">Homepage 1</a></li>
-                                        <li class="relative hover:bg-gray-50"><a class="block py-2 px-6 border-b border-gray-100" href="#">Homepage 2</a></li>
-                                    </ul>
+                                @foreach ($categories as $category)
+                                <li class=" relative hover:bg-gray-50">
+                                    <a class="block py-2 px-6 border-b border-gray-100" href="/category">{{ $category["category"] }}</a>
                                 </li>
-                                <li class="subdropdown relative hover:bg-gray-50">
-                                    <a class="block py-2 px-6 border-b border-gray-100" href="#">
-                                        Pages
-                                    </a>
-
-                                    <!--dropdown submenu-->
-                                    <ul class="dropdown-menu absolute left-full right-auto transform top-full z-50 border-b-0 text-left -mt-10 ml-0 mr-0 bg-white border border-gray-100" style="min-width: 12rem;">
-                                        <li class="relative hover:bg-gray-50"><a class="block py-2 px-6 border-b border-gray-100" href="#">404</a></li>
-                                        <li class="relative hover:bg-gray-50"><a class="block py-2 px-6 border-b border-gray-100" href="#">Author</a></li>
-                                        <li class="relative hover:bg-gray-50"><a class="block py-2 px-6 border-b border-gray-100" href="#">Category</a></li>
-                                        <li class="relative hover:bg-gray-50"><a class="block py-2 px-6 border-b border-gray-100" href="#">Search</a></li>
-                                        <li class="relative hover:bg-gray-50"><a class="block py-2 px-6 border-b border-gray-100" href="#">Page</a></li>
-                                        <li class="relative hover:bg-gray-50"><a class="block py-2 px-6 border-b border-gray-100" href="#">Contact</a></li>
-                                    </ul>
-                                </li>
-                                <li class="subdropdown relative hover:bg-gray-50">
-                                    <a class="block py-2 px-6 border-b border-gray-100" href="#">
-                                        Post
-                                    </a>
-
-                                    <!--dropdown submenu-->
-                                    <ul class="dropdown-menu absolute left-full right-auto transform top-full z-50 border-b-0 text-left -mt-10 ml-0 mr-0 bg-white border border-gray-100" style="min-width: 12rem;">
-                                        <li class="relative hover:bg-gray-50"><a class="block py-2 px-6 border-b border-gray-100" href="#">Post default</a></li>
-                                        <li class="relative hover:bg-gray-50"><a class="block py-2 px-6 border-b border-gray-100" href="#">Post fullwidth</a></li>
-                                    </ul>
-                                </li>
-
-                                <li class="subdropdown relative hover:bg-gray-50">
-                                    <a class="block py-2 px-6 border-b border-gray-100" href="#">
-                                        Documentation
-                                    </a>
-
-                                    <!--dropdown submenu-->
-                                    <ul class="dropdown-menu absolute left-full right-auto transform top-full z-50 border-b-0 text-left -mt-10 ml-0 mr-0 bg-white border border-gray-100" style="min-width: 12rem;">
-                                        <li class="relative hover:bg-gray-50"><a class="block py-2 px-6 border-b border-gray-100" href="#">Get started</a></li>
-                                        <li class="relative hover:bg-gray-50"><a class="block py-2 px-6 border-b border-gray-100" href="#">Components</a></li>
-                                        <li class="relative hover:bg-gray-50"><a class="block py-2 px-6 border-b border-gray-100" href="#">Credits</a></li>
-                                        <li class="relative hover:bg-gray-50"><a class="block py-2 px-6 border-b border-gray-100" href="#">Changelogs</a></li>
-                                    </ul>
-                                </li>
+                                @endforeach
                             </ul>
-                        </li>
-                        <li class="relative border-l border-gray-800 hover:bg-gray-900">
-                            <a class="block py-3 px-6 border-b-2 border-transparent" href="#">Sport</a>
-                        </li>
-                        <li class="relative border-l border-gray-800 hover:bg-gray-900">
-                            <a class="block py-3 px-6 border-b-2 border-transparent" href="#">Travel</a>
                         </li>
                         <li class="relative border-l border-gray-800 hover:bg-gray-900">
                             @auth
                                 <a class="block py-3 px-6 border-b-2 border-transparent" href="/profile">Profile</a>
-                            @else
-                                <a class="block py-3 px-6 border-b-2 border-transparent" href="#">Techno</a>
                             @endauth
                         </li>
                         <li class="relative border-l border-gray-800 hover:bg-gray-900">

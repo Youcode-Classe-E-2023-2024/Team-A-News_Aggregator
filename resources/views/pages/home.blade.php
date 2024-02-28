@@ -1,9 +1,6 @@
 @extends('layouts.main')
 
 @section('content')
-
-    <x-navbar_home/>
-
     <!-- =========={ MAIN }==========  -->
     <x-partiehome :fourHeroes="$fourHeroes" :mainHero="$mainHero"/>
 

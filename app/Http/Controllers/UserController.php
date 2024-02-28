@@ -17,7 +17,7 @@ class UserController extends Controller
         $u = UserInterest::where('user_id', Auth::user()->id)->get();
 
         if (isset($request->interests)) {
-            if (count($u) <= 4) {
+            if (count($u) >= 4) {
                 return back()->with('error', 'error, user already have enough interests');
             }
             Validator::make($request->all(), [
