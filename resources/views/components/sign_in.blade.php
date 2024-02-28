@@ -1,4 +1,4 @@
-<div class="w-full flex justify-center h-screen items-center">
+<div class="w-full h-full flex justify-center h-screen items-center">
     <form id="login-form" class="mt-10 space-y-4" method="POST" action="{{ route('login_handle') }}">
         @csrf
         @if ($errors->any())
