@@ -23,17 +23,9 @@
                                 @endforeach
                             </ul>
                         </li>
-
-
-
-                        <li class="relative border-l border-gray-800 hover:bg-gray-900">
-                            <a class="block py-3 px-6 border-b-2 border-transparent" href="#">Travel</a>
-                        </li>
                         <li class="relative border-l border-gray-800 hover:bg-gray-900">
                             @auth
                                 <a class="block py-3 px-6 border-b-2 border-transparent" href="/profile">Profile</a>
-                            @else
-                                <a class="block py-3 px-6 border-b-2 border-transparent" href="#">Techno</a>
                             @endauth
                         </li>
                         <li class="relative border-l border-gray-800 hover:bg-gray-900">
