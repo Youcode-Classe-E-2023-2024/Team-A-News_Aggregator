@@ -114,9 +114,11 @@
                                 <a class="block py-3 px-6 border-b-2 border-transparent" href="#">Techno</a>
                             @endauth
                         </li>
+                        @if(Auth::user()->can('view-dashboard'))
                         <li class="relative border-l border-gray-800 hover:bg-gray-900">
                             <a class="block py-3 px-6 border-b-2 border-transparent" href="/dashboard">Dashboard</a>
                         </li>
+                        @endif
                         @auth
 
                             @if(Auth::user()->can('favorite-list'))
